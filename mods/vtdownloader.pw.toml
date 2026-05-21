@@ -1,0 +1,13 @@
+name = "VTDownloader"
+filename = "vt-downloader-2.4.1+1.21.11.jar"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "543b720523ad5369732e4b51ce757791839c706f"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7721736
+project-id = 432425

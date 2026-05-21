@@ -2,15 +2,28 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "b7e66b0ebce9af97152e584ce87adb013b9011bea2f9e1d74a24b9bde6b572dd"
+hash = "6280bc8fb096009aee05aefce297c8eab34bd5a5450d18f345a3f03a490c9f17"
+
+[[files]]
+file = "CLAUDE.md"
+hash = "34152a1566364cd29c07a2ddc6a57932b5cbfb7add3f39a58c69a34701432f15"
 
 [[files]]
 file = "README.md"
-hash = "e16bb1a49e3f319c326e13c5bf0532015d47040d422cf6c9c4343bf46779b5fa"
+hash = "db4924a727ab1e03323b64b204a20affbbe3e6fba1af56f6f9efd5171eb41a95"
 
 [[files]]
 file = "docs/TBS-mod-strategy.md"
 hash = "2042a13ad72a1fb3a593bc7e152ae96892331ab4d20bcab010e7470750fb2002"
+
+[[files]]
+file = "docs/resource-packs.md"
+hash = "7a2752bfc4fa131f6bbbee1fa5ec50a36a8533a803375a0d65e189d7062e575f"
+
+[[files]]
+file = "mods/3dskinlayers.pw.toml"
+hash = "8c8f44ed74ea93a496ac1d476ab71b59b0b15a780d5ab60e5559ef637105ee6d"
+metafile = true
 
 [[files]]
 file = "mods/ambientsounds.pw.toml"
@@ -104,12 +117,12 @@ metafile = true
 
 [[files]]
 file = "mods/first-person-model.pw.toml"
-hash = "6af3bcab30b8381f99d745392d0b3350a625e69f9709e3bfb23df54e6ca08530"
+hash = "46061206862d37d7c951508d8593b9a9743b1b95555359e368a55ef70fac9749"
 metafile = true
 
 [[files]]
 file = "mods/fzzy-config.pw.toml"
-hash = "1fffe5b72ab3b513ebbd19f3d3f0d574b8bb20dd6e34efbb02aeb1b15735e4ee"
+hash = "de954e56216772900768426c541731ec91d0c7bd1c5037ad2f6cc5552f87c635"
 metafile = true
 
 [[files]]
@@ -149,7 +162,7 @@ metafile = true
 
 [[files]]
 file = "mods/not-enough-animations.pw.toml"
-hash = "5b7e21b62451306d27b15555211619fa9fc1b5a8381c2693eedab31e3b0fad7b"
+hash = "0f1192a7e40192261310314d9fc2d584c701245dd29698ea1a674b3b676e9abd"
 metafile = true
 
 [[files]]
@@ -163,8 +176,8 @@ hash = "16a150be6cc1dbd2f6c44c3d9c66b866fff4fb1826cc3521902bee65321734e5"
 metafile = true
 
 [[files]]
-file = "mods/skin-layers-3d.pw.toml"
-hash = "26537e95a87835bd743cb34551662cb0b590d88deab2b8197878b258e69378b0"
+file = "mods/simple-voice-chat.pw.toml"
+hash = "2e210dbb2eca274d176c1f5d93d41638f9826153d358e9c428f1341331bc0ea5"
 metafile = true
 
 [[files]]
@@ -194,7 +207,7 @@ metafile = true
 
 [[files]]
 file = "mods/subtle-effects.pw.toml"
-hash = "415bb0e144836536455f1c628342dc0d7f4cb50b4918e2679a967ab965737350"
+hash = "093b71a04cb15cf174fdabaf69f16f2e1cd9de5aaf16130e037ef62b6d4e42ba"
 metafile = true
 
 [[files]]
@@ -213,6 +226,11 @@ hash = "07401c57caa88b40745f1016c950cb950ad9deff3060a0bf06c2fff8b25c7c7c"
 metafile = true
 
 [[files]]
+file = "mods/vtdownloader.pw.toml"
+hash = "59dc6d12209696137a7e9be87c6194e15e0bc90c7122957ade9d45f3a2a27efe"
+metafile = true
+
+[[files]]
 file = "mods/wthit.pw.toml"
 hash = "99af4711661f64b63529e21db3b75d64e7a61c42e2afe71ae7c0a28cf33c5f64"
 metafile = true
@@ -225,4 +243,29 @@ metafile = true
 [[files]]
 file = "mods/zoomify.pw.toml"
 hash = "f27f5b486c792c796e451515c85b39b48c10840cfbec7f8632ed6c2643edde1e"
+metafile = true
+
+[[files]]
+file = "resourcepacks/fresh-animations-emissive.pw.toml"
+hash = "d8651129d83a9b2a767bcd3479c3ed6d1756b094b75f12c48739b74156118c33"
+metafile = true
+
+[[files]]
+file = "resourcepacks/fresh-animations-extensions.pw.toml"
+hash = "e1c7bc74d306ad544be85b1230db2563831f3bc6c07577f1701fc27e54039dd5"
+metafile = true
+
+[[files]]
+file = "resourcepacks/fresh-animations.pw.toml"
+hash = "25f6d0646f0447d167bd241c9b7d2bbeb3f96949b750499e52ff233c91629753"
+metafile = true
+
+[[files]]
+file = "resourcepacks/patrix-32x.pw.toml"
+hash = "f0d1ddd5e1a0cf9d4eb55696f10b20373c6838036fe0164a5163ab45ed933cfb"
+metafile = true
+
+[[files]]
+file = "shaderpacks/complementary-reimagined.pw.toml"
+hash = "5a30005002e5cfd4f82879e27b78ba15ae9442783d31c26e5672a300b21e5a19"
 metafile = true

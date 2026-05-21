@@ -1,13 +1,16 @@
 name = "TBS-Client"
 author = "Slash"
-version = "1.0.0"
+version = "1.1.0"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "8acfa9a876e29b738ab670911737ac0835ac6e8d402abd232c95bd63dcff3fc8"
+hash = "747a5aa5a43f50cc5a260ae28e55d595a70a55945831c78a67329eea182d31ff"
 
 [versions]
 fabric = "0.19.2"
 minecraft = "26.1.2"
+
+[options]
+acceptable-game-versions = ["1.21.11"]
