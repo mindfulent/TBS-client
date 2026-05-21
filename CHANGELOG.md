@@ -2,6 +2,27 @@
 
 All notable changes to the TBS-Client modpack.
 
+## [1.1.1] — 2026-05-20
+
+Fixes the launch crash in v1.1.0, and bundles the work-in-progress StreamCraft build.
+
+### Fixed — v1.1.0 would not launch
+- **AmbientSounds** was missing its **CreativeCore** dependency (CurseForge metadata never
+  declared it) — added CreativeCore `2.14.14`.
+- **Sodium** downgraded `0.8.12` → `0.8.11` *(Modrinth)* — Voxy `0.2.15-beta`, the latest
+  Voxy, requires Sodium `0.8.9`–`0.8.11`.
+- **VTDownloader** removed — its only build targets Minecraft `1.21.11`, which the Fabric
+  loader treats as distinct from `26.1.2`, so it was rejected at load. Re-add when a
+  26.1.2 build appears.
+
+### Changed
+- **StreamCraft Live** — switched from the Modrinth `0.8.8` reference to a bundled local
+  build, `streamcraft-0.8.22+mc26.1.2.jar`, carried as a loose override in `mods/`. 0.8.22
+  is a work-in-progress build not yet on Modrinth; re-pin to the Modrinth version once it
+  is published. TBS-Server bundles the identical jar.
+
+50 entries (49 packwiz metadata + the bundled StreamCraft jar).
+
 ## [1.1.0] — 2026-05-20
 
 Adds an **optional visual layer** — the Complementary Reimagined shader, the Fresh

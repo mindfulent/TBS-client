@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "6280bc8fb096009aee05aefce297c8eab34bd5a5450d18f345a3f03a490c9f17"
+hash = "02e2a49b85601006ffb52a3678912a4e63582fa86cb1ca2bf2383b0866ebe577"
 
 [[files]]
 file = "CLAUDE.md"
@@ -10,7 +10,7 @@ hash = "34152a1566364cd29c07a2ddc6a57932b5cbfb7add3f39a58c69a34701432f15"
 
 [[files]]
 file = "README.md"
-hash = "db4924a727ab1e03323b64b204a20affbbe3e6fba1af56f6f9efd5171eb41a95"
+hash = "0d2a8de0803832fbce8d893a4360062c7193e3ffaf1306f9f07136a9ba0fdaae"
 
 [[files]]
 file = "docs/TBS-mod-strategy.md"
@@ -78,6 +78,11 @@ metafile = true
 [[files]]
 file = "mods/crash-assistant.pw.toml"
 hash = "9e8100b2d8f488e7c41e1924466fffae411c47024d5943b006393182b8c820eb"
+metafile = true
+
+[[files]]
+file = "mods/creativecore.pw.toml"
+hash = "54fcd7d1b792d4f1f2bc9e643b2e8c0e97bdd4485c24e5cc69438c187bd4686e"
 metafile = true
 
 [[files]]
@@ -187,7 +192,7 @@ metafile = true
 
 [[files]]
 file = "mods/sodium.pw.toml"
-hash = "e5278cc1dcda4fe789eaf05318fa5885f9f3412685f8ac231fe9a395409089e0"
+hash = "b3bf6eb1cf803d702af91d3ca5f39e7528e1d55afdae03833f6e31698803caa9"
 metafile = true
 
 [[files]]
@@ -201,9 +206,8 @@ hash = "ad5428a954767f786c87bb2ec752cd93619344196334b752adc3d1b85d0223c8"
 metafile = true
 
 [[files]]
-file = "mods/streamcraft-live.pw.toml"
-hash = "73e5c2a8eb6b468e70c3075fcc950aca9f167202114117fee89b440fdcf21d2f"
-metafile = true
+file = "mods/streamcraft-0.8.22+mc26.1.2.jar"
+hash = "c18c802289ba5da32b1a60ad0579c8d78056ae3e2dd1a9db539061158bb5d78a"
 
 [[files]]
 file = "mods/subtle-effects.pw.toml"
@@ -223,11 +227,6 @@ metafile = true
 [[files]]
 file = "mods/voxy.pw.toml"
 hash = "07401c57caa88b40745f1016c950cb950ad9deff3060a0bf06c2fff8b25c7c7c"
-metafile = true
-
-[[files]]
-file = "mods/vtdownloader.pw.toml"
-hash = "59dc6d12209696137a7e9be87c6194e15e0bc90c7122957ade9d45f3a2a27efe"
 metafile = true
 
 [[files]]
