@@ -1,0 +1,11 @@
+# packwiz exports
+*.mrpack
+*.zip
+
+# packwiz local cache
+.packwiz-cache/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini

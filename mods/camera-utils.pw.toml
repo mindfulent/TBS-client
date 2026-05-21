@@ -1,0 +1,13 @@
+name = "Camera Utils"
+filename = "camerautils-fabric-1.1.2+26.1.2.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "8fd4ad47389478ef9cf1abb91a9f4d678fdc3538"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7904874
+project-id = 510234
