@@ -2,6 +2,36 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.5] — 2026-05-23
+
+## Addressing the v1.1.4 rejection
+
+Thanks for the moderation review on v1.1.4 — you flagged three CurseForge-hosted
+mods that were shipping as override jars instead of `manifest.json` references:
+
+- `overrides/mods/blur-fabric-6.2.0+26.1.jar`
+- `overrides/mods/entityculling-fabric-1.10.2-mc26.1.jar`
+- `overrides/mods/voicechat-fabric-2.6.17+26.1.2.jar`
+
+All three are now properly referenced in `manifest.json` by their CurseForge
+project + file IDs (Blur+ 393563/7655028, Entity Culling 448233/8053788, Simple
+Voice Chat 416089/8037825). The exported `.zip` ships zero CurseForge-hosted
+jars in `overrides/mods/`. Appreciate the catch — happy to make any further
+adjustments if anything else looks off.
+
+## Changes since the last CurseForge release (v1.1.3)
+
+**Added (was v1.1.4):**
+- **Cubes Without Borders** `4.0.3` — borderless-fullscreen window mode for
+  players running Minecraft alongside OBS / Discord / a browser without the
+  window minimizing on focus change.
+
+**Fixed (v1.1.5):**
+- CurseForge `.zip` now references Blur+, Entity Culling, and Simple Voice
+  Chat through `manifest.json` instead of bundling them as override jars.
+
+No mod removed; no gameplay change. Mod count is 51.
+
 ## [1.1.4] — 2026-05-22
 
 Adds a borderless-fullscreen quality-of-life mod recommended by a community
