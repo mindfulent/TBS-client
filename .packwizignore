@@ -22,6 +22,20 @@ plugins/
 # Claude Code / repo guidance — not player-facing
 CLAUDE.md
 
+# Python venv (created by `pip install -r scripts/requirements.txt` per
+# PUBLISHING.md). Without this, `packwiz refresh` scoops up the entire
+# 4,000+-file virtualenv tree and embeds it under `overrides/.venv/` in
+# every exported .mrpack.
+.venv/
+
+# packwiz binaries themselves. The Windows .exe is checked in for that
+# platform; on macOS / Linux, maintainers typically symlink `packwiz` to
+# their native binary at the pack root so scripts/publish.py picks it up
+# (publish.py looks for `./packwiz` first, then globs `packwiz*`). Neither
+# should ever ride in the distributed .mrpack.
+packwiz
+packwiz.exe
+
 # Build output and VCS
 dist/
 .git/

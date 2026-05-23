@@ -12,6 +12,7 @@ dist/
 # Python (scripts/publish.py)
 __pycache__/
 *.pyc
+.venv/
 
 # OS junk
 .DS_Store
