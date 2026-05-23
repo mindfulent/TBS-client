@@ -47,7 +47,7 @@ resolved state of every mod, and `docs/TBS-mod-strategy.md` for the full design 
   First-person Model, Skin Layers 3D, Smooth Swapping
 - **Tier 4 — HUD, UI, utility:** BetterF3, Mod Menu, Cloth Config + YACL, AppleSkin, WTHIT,
   JEI, Paginated Advancements, Mouse Wheelie, Controlling, Status Effect Bars,
-  Crash Assistant, Blur+
+  Crash Assistant, Blur+, Cubes Without Borders
 - **Tier 5 — Cross-side:** StreamCraft Live, Simple Voice Chat
 
 ## Resource packs & shader

@@ -1,6 +1,6 @@
 name = "Just Enough Items (JEI)"
 filename = "jei-26.1.2-fabric-29.6.2.31.jar"
-side = "both"
+side = "client"
 
 [download]
 hash-format = "sha1"

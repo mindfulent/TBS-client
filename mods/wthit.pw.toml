@@ -1,6 +1,6 @@
 name = "WTHIT"
 filename = "wthit-26.1-fabric-19.0.1.jar"
-side = "both"
+side = "client"
 
 [download]
 url = "https://cdn.modrinth.com/data/6AQIaxuO/versions/XqSFBb4k/wthit-26.1-fabric-19.0.1.jar"

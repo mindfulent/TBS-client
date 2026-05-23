@@ -2,6 +2,36 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.4] — 2026-05-22
+
+Adds a borderless-fullscreen quality-of-life mod recommended by a community
+playtester. Useful for streamers running a second monitor — Minecraft stays
+"fullscreen" while you switch focus to OBS / Discord / a browser without the
+window minimizing and interrupting the stream.
+
+### Added — Tier 4 (HUD, UI, utility)
+- **Cubes Without Borders** `4.0.3` — borderless-fullscreen window mode. Pure
+  client-side window behaviour, side `client`. CurseForge project `975120`,
+  also published on Modrinth (`ETlrkaYF`) as a fallback if the CF metafile ever
+  needs to be re-sourced.
+
+### Changed — side-field sweep
+- Standardised `side = "client"` across all 32 mods that had inherited
+  `side = "both"` from CurseForge metadata at install time. The CLAUDE.md rule
+  is explicit ("`side` must be `client` for every mod except the cross-side
+  ones"), but packwiz copies whatever the upstream registry reports — most
+  client-only QoL mods are tagged "Both" on CurseForge, so the project
+  silently drifted. Functionally a no-op for the Modrinth manifest (both
+  resolve to client-required), but a doc-honesty + future-reuse fix.
+- **StreamCraft Live** and **Simple Voice Chat** kept at `side = "both"` —
+  they really are cross-side (shipped at the same version on TBS-Server).
+
+### Notes
+- No change to StreamCraft Live, Simple Voice Chat, or any cross-side mod —
+  v1.1.4 is a pure client-only addition, no TBS-Server bump needed.
+
+51 packwiz metadata entries (canonical, Windows-variant).
+
 ## [1.1.3] — 2026-05-22
 
 Multi-platform release. v1.1.2 shipped only the Windows StreamCraft variant, so
