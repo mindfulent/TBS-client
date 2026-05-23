@@ -3,11 +3,11 @@ filename = "wthit-26.1-fabric-19.0.1.jar"
 side = "both"
 
 [download]
-hash-format = "sha1"
-hash = "64274369887a97221ac1fe5d8628ea4796aa53d1"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/6AQIaxuO/versions/XqSFBb4k/wthit-26.1-fabric-19.0.1.jar"
+hash-format = "sha512"
+hash = "9d09348b9aa58326caae28048296a5ed7fbb1f8f181817c4e43bfde85b78461f17c46c64e5be28f825e0f1b5e833bee904c987d778f7ea0584737a14671b9d84"
 
 [update]
-[update.curseforge]
-file-id = 7880671
-project-id = 440979
+[update.modrinth]
+mod-id = "6AQIaxuO"
+version = "XqSFBb4k"

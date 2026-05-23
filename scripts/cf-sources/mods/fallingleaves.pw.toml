@@ -1,0 +1,13 @@
+name = "Falling Leaves (Fabric)"
+filename = "fallingleaves-2.0.6+26.1.jar"
+side = "both"
+
+[download]
+hash-format = "sha1"
+hash = "67f0e53df67f1d17964d31aefe34723b1ed067f1"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 8009344
+project-id = 417510

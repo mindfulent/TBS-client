@@ -1,0 +1,5 @@
+# Dependencies for scripts/publish.py — install with:
+#   pip install -r scripts/requirements.txt
+requests>=2.31
+markdown>=3.5    # optional: renders the CurseForge changelog as HTML; publish.py
+                 # falls back to plain text if this is missing

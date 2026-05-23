@@ -2,15 +2,11 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "02e2a49b85601006ffb52a3678912a4e63582fa86cb1ca2bf2383b0866ebe577"
-
-[[files]]
-file = "CLAUDE.md"
-hash = "34152a1566364cd29c07a2ddc6a57932b5cbfb7add3f39a58c69a34701432f15"
+hash = "6b6c4897580136dcc7d35144f020f43ecfe64c437276ee3b5f0af3018abe2f20"
 
 [[files]]
 file = "README.md"
-hash = "0d2a8de0803832fbce8d893a4360062c7193e3ffaf1306f9f07136a9ba0fdaae"
+hash = "7d0c7920472c5258484d35bbb42b1045acf7dac65ade2efeea35e452fae291b2"
 
 [[files]]
 file = "docs/TBS-mod-strategy.md"
@@ -57,12 +53,12 @@ metafile = true
 
 [[files]]
 file = "mods/camera-utils.pw.toml"
-hash = "c73f5ece788c338f6da9948d7698c804c5ddcc01b3506f613ae9c79e2ecd4d54"
+hash = "5815d5a135c256ef1ee4e958d16fb7f87b18a84f7ee9be6f69ab4bbac120b32d"
 metafile = true
 
 [[files]]
 file = "mods/cloth-config.pw.toml"
-hash = "1b8f4603e81c48badce4a9321dea87bdeb9d3b5a2f0be566139d087afad73a47"
+hash = "b2a313913ed613a69bebea104a6535987182808cfce30acce473816437f85850"
 metafile = true
 
 [[files]]
@@ -77,7 +73,7 @@ metafile = true
 
 [[files]]
 file = "mods/crash-assistant.pw.toml"
-hash = "9e8100b2d8f488e7c41e1924466fffae411c47024d5943b006393182b8c820eb"
+hash = "b0ee602e15644fb8c5a3c49e3decbf5453c2e7ae9473f5b249f65cbcf9a1a944"
 metafile = true
 
 [[files]]
@@ -102,12 +98,12 @@ metafile = true
 
 [[files]]
 file = "mods/fabric-api.pw.toml"
-hash = "2a77dc7aade5de6d21315582c4b70db40ff2bdf746b61c10d7ad3c5be8422f75"
+hash = "eebee020bae965b9f4da39a763188ec8bbbc0e34fa50c9891f921b0a14e53f7e"
 metafile = true
 
 [[files]]
 file = "mods/fabric-language-kotlin.pw.toml"
-hash = "337d97b990f76c91584b12600651ae7bd47a0824e45070b3d9330b0922149fc0"
+hash = "4040491034ad54617e4428b4d9fda5a407cd61930bcd58312a75d3fc40c8285f"
 metafile = true
 
 [[files]]
@@ -127,7 +123,7 @@ metafile = true
 
 [[files]]
 file = "mods/fzzy-config.pw.toml"
-hash = "de954e56216772900768426c541731ec91d0c7bd1c5037ad2f6cc5552f87c635"
+hash = "75b2dc71daef3c3e4f22f74020337d43b6797544b0b170e1a85b584ba501b6c1"
 metafile = true
 
 [[files]]
@@ -167,7 +163,7 @@ metafile = true
 
 [[files]]
 file = "mods/not-enough-animations.pw.toml"
-hash = "0f1192a7e40192261310314d9fc2d584c701245dd29698ea1a674b3b676e9abd"
+hash = "74c2e929a180453beeca5106079f281e70ff0ed56854a52b4aab18db3f18d1cd"
 metafile = true
 
 [[files]]
@@ -192,7 +188,7 @@ metafile = true
 
 [[files]]
 file = "mods/sodium.pw.toml"
-hash = "b3bf6eb1cf803d702af91d3ca5f39e7528e1d55afdae03833f6e31698803caa9"
+hash = "c3cc2725794d9a76e2d71236d25bd60a9800bcbdf06c8a4a0acd321217c284b3"
 metafile = true
 
 [[files]]
@@ -206,12 +202,13 @@ hash = "ad5428a954767f786c87bb2ec752cd93619344196334b752adc3d1b85d0223c8"
 metafile = true
 
 [[files]]
-file = "mods/streamcraft-0.8.22+mc26.1.2.jar"
-hash = "c18c802289ba5da32b1a60ad0579c8d78056ae3e2dd1a9db539061158bb5d78a"
+file = "mods/streamcraft-live.pw.toml"
+hash = "1844e24dbf5cff742920437e8f351ebc73d375f272a1b756f1c6986e79908f74"
+metafile = true
 
 [[files]]
 file = "mods/subtle-effects.pw.toml"
-hash = "093b71a04cb15cf174fdabaf69f16f2e1cd9de5aaf16130e037ef62b6d4e42ba"
+hash = "cccb572fa8f2379f58e18dda655f33573645f2a3834df2f7ed84e9ce36424f29"
 metafile = true
 
 [[files]]
@@ -231,17 +228,17 @@ metafile = true
 
 [[files]]
 file = "mods/wthit.pw.toml"
-hash = "99af4711661f64b63529e21db3b75d64e7a61c42e2afe71ae7c0a28cf33c5f64"
+hash = "0ef19a4a5dff28c78b2cf4f3d019623e0059726fd8b5bc67b6a2232163137042"
 metafile = true
 
 [[files]]
 file = "mods/yacl.pw.toml"
-hash = "51a17d028bf0d35c66d269185a63ea4adc968f60727454d0f8ed3ef2138f8612"
+hash = "6cdcb88fd0a5864719f7744418532f9da7236e42723e1c5234f1d0f8de22366b"
 metafile = true
 
 [[files]]
 file = "mods/zoomify.pw.toml"
-hash = "f27f5b486c792c796e451515c85b39b48c10840cfbec7f8632ed6c2643edde1e"
+hash = "8891294389220bc0b9a6f3ffa48963649464b64705df6d90f109b6a6efb1c625"
 metafile = true
 
 [[files]]

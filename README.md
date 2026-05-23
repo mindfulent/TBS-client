@@ -18,7 +18,7 @@ contract in `docs/TBS-mod-strategy.md`).
 
 | Launcher | How |
 |----------|-----|
-| Prism Launcher | Import the `TBS-Client-X.Y.Z.mrpack` release file |
+| Prism Launcher | Import the `TheBlockSurvival-X.Y.Z.mrpack` release file |
 | CurseForge App | Import the exported `.zip` |
 
 ## Build / maintenance

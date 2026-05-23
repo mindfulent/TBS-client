@@ -1,0 +1,29 @@
+# Files in the repo that are NOT part of the distributed modpack.
+# packwiz indexes the whole pack directory by default; this keeps maintainer
+# tooling, credentials, and build output out of the exported .mrpack / .zip.
+# (README.md, CHANGELOG.md, and docs/ are intentionally NOT ignored — they are
+# small, player-readable, and have shipped since v1.0.)
+
+# Publish automation + its docs
+scripts/
+PUBLISHING.md
+
+# Safety net: TBS-Client is a Fabric modpack, plugins/ should always be empty.
+# `cf install <slug>` of a Bukkit-category project (e.g. Simple Voice Chat)
+# drops a stray .pw.toml here that poisons the CurseForge manifest with a
+# Bukkit project reference — CF rejects modpacks containing such references.
+# Ignore plugins/ so a stray cf install can't break a release.
+plugins/
+
+# Credentials
+.env
+.env.example
+
+# Claude Code / repo guidance — not player-facing
+CLAUDE.md
+
+# Build output and VCS
+dist/
+.git/
+.gitignore
+.packwiz-cache/

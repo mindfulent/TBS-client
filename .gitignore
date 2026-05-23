@@ -1,9 +1,17 @@
 # packwiz exports
 *.mrpack
 *.zip
+dist/
 
 # packwiz local cache
 .packwiz-cache/
+
+# Publish credentials — never commit
+.env
+
+# Python (scripts/publish.py)
+__pycache__/
+*.pyc
 
 # OS junk
 .DS_Store

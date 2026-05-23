@@ -1,13 +1,13 @@
 name = "Camera Utils"
 filename = "camerautils-fabric-1.1.2+26.1.2.jar"
-side = "both"
+side = "client"
 
 [download]
-hash-format = "sha1"
-hash = "8fd4ad47389478ef9cf1abb91a9f4d678fdc3538"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/rrwQMaWQ/versions/xuzUlRia/camerautils-fabric-1.1.2%2B26.1.2.jar"
+hash-format = "sha512"
+hash = "d4c1e8acb78248667aa1ba2bd27b0be73ffff0d04d6c5d7fee4c5584fc9abfe1e2b2762377e06ada5b9d87559df84e65f9bfc0019a6fbb94781429eb6eac9493"
 
 [update]
-[update.curseforge]
-file-id = 7904874
-project-id = 510234
+[update.modrinth]
+mod-id = "rrwQMaWQ"
+version = "xuzUlRia"
