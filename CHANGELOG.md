@@ -2,6 +2,45 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.7] — 2026-05-28
+
+**Updated:**
+- **StreamCraft Live** `0.8.25+mc26.1.2` → `0.9.9+mc26.1.2`. Brings in "the Adi branch"
+  — a rollup release covering everything between v0.8.25 and v0.9.9. Headline changes
+  most visible on TBS:
+  - New custom Windows capture DLL (`libstreamcraft_windows.dll`) — Media Foundation
+    webcam + Windows Graphics Capture screen, replacing the legacy Video for Windows +
+    GDI BitBlt path. Real failure messages ("Camera failed: device busy /
+    permission denied") instead of silent fails.
+  - Borderless-fullscreen mod compat — Cubes Without Borders, Optifine borderless, etc.
+    desktop streaming now works under those window modes.
+  - Late-joining viewers reliably hear desktop audio without the publisher having to
+    toggle Desktop Audio off/on.
+  - 1.21.6+ audio receiver fix — Mac (or any) viewer hears PC publishers correctly.
+  - Display Block crafting recipe — iron in corners, glass panes on edges, redstone in
+    center. Survival players no longer need `/give` or Creative.
+  - Display Block source-selector fix — the "block won't switch to me even though I'm
+    sharing" trap is resolved.
+  - Screen-share click-before-connect race fix — clicking Share Screen before LiveKit
+    finishes connecting now works.
+  - New in-mod Support + Backers screen — coral ♥ icon in the main menu footer
+    between How it works and Settings.
+
+  `PROTOCOL_VERSION` unchanged — v0.9.9 clients connect cleanly to any v0.8.x or v0.9.x
+  server. TBS-Server is upgraded synchronously in TBS-server v1.0.7.
+
+No other mod added, removed, or updated. Mod count unchanged.
+
+## [1.1.6] — 2026-05-23
+
+**Added:**
+- **Pre-configured server list entry** — `TheBlockSurvival → theblocksurvival.com`
+  ships in `servers.dat` at the pack root, so players see the official server in
+  their multiplayer list on first launch. Mirrors the pattern used by the TBA pack
+  (`join.theblock.academy`).
+
+No mod added, removed, or updated. Mod count is 51.
+
 ## [1.1.5] — 2026-05-23
 
 ## Addressing the v1.1.4 rejection

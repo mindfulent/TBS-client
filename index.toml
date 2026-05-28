@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "63d3b961f94a3d62ca9f3db8560292b37c3aff46764ac719322ebf621560124e"
+hash = "cefc36c23463fbd62296a11e651332081127d7810b1e8f738dfef19f4217716f"
 
 [[files]]
 file = "README.md"
@@ -56,6 +56,11 @@ hash = "3636c7432344dbccdbcdc595e82cec09d0090aeb365fe8b81cc37892f70332bf"
 metafile = true
 
 [[files]]
+file = "mods/bridging-mod.pw.toml"
+hash = "140443a6bbbefb50812d1e5d3e25b60abc56504945c096e853bf303eedcd01e3"
+metafile = true
+
+[[files]]
 file = "mods/camera-utils.pw.toml"
 hash = "5815d5a135c256ef1ee4e958d16fb7f87b18a84f7ee9be6f69ab4bbac120b32d"
 metafile = true
@@ -86,11 +91,6 @@ hash = "5288e5f018da8bfc471b7519aa7f8086bc2eab5bc3eb6571d7823c3edaeb64e3"
 metafile = true
 
 [[files]]
-file = "mods/cubes-without-borders.pw.toml"
-hash = "e04c1960a1363058533252c1a8c1f0c2cbe05e63599a9d9900ee45dd374d0d31"
-metafile = true
-
-[[files]]
 file = "mods/entity-model-features.pw.toml"
 hash = "9e089aeb7694147a66861c8cf2e6d00c975a60b9ee577329b564bb3634d110a9"
 metafile = true
@@ -107,7 +107,7 @@ metafile = true
 
 [[files]]
 file = "mods/fabric-api.pw.toml"
-hash = "1a053a94a3baa40f223fb4d78e8e9f0c8a6e8a1da2541089de0c3c48f1365b4a"
+hash = "0e4c05edb41c24531e2a5df5be5d0a871a961ac61a6794ec98c4b80347a467a9"
 metafile = true
 
 [[files]]
@@ -212,7 +212,7 @@ metafile = true
 
 [[files]]
 file = "mods/streamcraft-live.pw.toml"
-hash = "1844e24dbf5cff742920437e8f351ebc73d375f272a1b756f1c6986e79908f74"
+hash = "97f4b0275b86f6859880a54bcb97a33dc3fd6123882b1f92747decd922474055"
 metafile = true
 
 [[files]]
@@ -242,7 +242,7 @@ metafile = true
 
 [[files]]
 file = "mods/yacl.pw.toml"
-hash = "cfae17c90bb0f91e61dc8c688a2e5f23f110c44d90ac707812ceda46bcae26d5"
+hash = "74addc10c8ec0d080f405c5e03a19b78e1df8ad4a1e26cba15d34a75afd470b7"
 metafile = true
 
 [[files]]
@@ -275,6 +275,18 @@ file = "servers.dat"
 hash = "fd7a3cfb6c0db4101f790400cf7b166835304ecd155552034436d658bbcafd8e"
 
 [[files]]
+file = "shaderpacks/BSL_v10.0.zip"
+hash = "b6e79a4f5746bd0b2bd8d54bb4c430539e7e747e8679ac985bc07368422e4e09"
+
+[[files]]
+file = "shaderpacks/Solas_Shader_v3.1c.zip"
+hash = "188d2b058210d3e4df1f98c770df3d7022fba930f7c0cfc6ca4490efb0bc2f88"
+
+[[files]]
 file = "shaderpacks/complementary-reimagined.pw.toml"
 hash = "5a30005002e5cfd4f82879e27b78ba15ae9442783d31c26e5672a300b21e5a19"
 metafile = true
+
+[[files]]
+file = "shaderpacks/photon_v1.2a.zip"
+hash = "a7134a10138f6e5fe523dafa23bd266ba2e53621ac65a5e23294fe9a125b9d73"
