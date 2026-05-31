@@ -13,6 +13,26 @@ into **StreamCraft Live** — use StreamCraft for in-game voice going forward.
   second-cross-side-mod exception that v1.0.1 introduced when SVC was added.
 - Lockstep release with TBS-Server 1.1.13.
 
+### CurseForge build hotfix (2026-05-31)
+
+The CurseForge `.zip` (all platform variants) crashed at launch with
+`Incompatible mods found! … Replace mod 'Zoomify' 2.15.2+1.21.11 with any version
+compatible with minecraft 26.1.2`. The **Modrinth `.mrpack` was never affected** — this
+was a CurseForge-packaging-only bug, so no pack-content change and no version bump.
+
+Cause: two `scripts/cf-sources/` CurseForge swaps had gone stale. CurseForge still hosted
+only the older `+1.21.11` build of each mod while the canonical Modrinth source had already
+moved to the `+26.1` build, so the CF `.zip` shipped a jar whose `fabric.mod.json` requires
+Minecraft `<1.22` — which the 26.1.2 runtime does not satisfy, aborting the whole pack.
+
+- Dropped `scripts/cf-sources/mods/zoomify.pw.toml` and `scripts/cf-sources/mods/blur-plus.pw.toml`.
+  Both mods now ride in the CurseForge `.zip` as bundled `+26.1` overrides (same jars the
+  Modrinth build uses) instead of stale CurseForge manifest references. Re-add each swap once
+  CurseForge publishes a 26.1.2 build.
+- Added a **stale-swap guard** to `scripts/publish.py`: the CurseForge export now fails fast
+  (offline, no CF API) when a swapped CurseForge jar's filename lacks the pack's MC version
+  token that the canonical Modrinth jar carries — preventing this class of silent breakage.
+
 ## [1.1.12] — 2026-05-31
 
 **Adds Xaero's maps** so the Open Parties and Claims overlay works — claims drawn

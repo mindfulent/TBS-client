@@ -179,6 +179,17 @@ def read_pack_field(pack_toml: Path, key: str, section: str | None = None) -> st
     return m.group(1)
 
 
+def pw_filename(pw_toml: Path) -> str:
+    """Best-effort read of a packwiz metafile's `filename = "..."` value.
+    Returns "" when absent/unreadable — callers treat that as "can't compare"."""
+    try:
+        m = re.search(r'^\s*filename\s*=\s*"([^"]+)"',
+                      pw_toml.read_text(encoding="utf-8"), re.MULTILINE)
+        return m.group(1) if m else ""
+    except OSError:
+        return ""
+
+
 def extract_changelog(changelog_path: Path, version: str) -> str:
     """Return the `## [X.Y.Z]` section of CHANGELOG.md (TBS-client uses the
     Keep-a-Changelog `## [version] — date` heading style)."""
@@ -244,6 +255,40 @@ def packwiz_export(pack_dir: Path, packwiz_exe: Path, platform: str, out_path: P
                 if canon in excluded_set:
                     continue
                 swaps[canon] = cf_src
+
+        # Stale-swap guard. A CurseForge swap can silently rot: CurseForge may
+        # still host only an older Minecraft build of a mod while the canonical
+        # Modrinth source has already moved to this pack's MC version. Shipping
+        # that stale CF file makes Fabric refuse to load the whole pack at launch
+        # (the Zoomify 2.15.2+1.21.11-vs-2.16.0+26.1 incident: CF lagged a release
+        # behind Modrinth). Catch it offline — no CF API needed: if the canonical
+        # jar's filename embeds this pack's MC version token but the swapped CF
+        # jar's filename does not, the swap is stale and must be dropped until
+        # CurseForge catches up. (Conservative: only fires when the canonical
+        # filename *proves* a matching build exists, so mods that simply don't
+        # encode the MC version in their filename never false-positive.)
+        mc_version = read_pack_field(pack_dir / "pack.toml", "minecraft",
+                                     section="versions")
+        mc_tokens = [t for t in (mc_version, mc_version.rsplit(".", 1)[0]) if t]
+        stale: list[str] = []
+        for canon, cf_src in swaps.items():
+            canon_fn, swap_fn = pw_filename(canon), pw_filename(cf_src)
+            if not canon_fn or not swap_fn:
+                continue
+            if (any(t in canon_fn for t in mc_tokens)
+                    and not any(t in swap_fn for t in mc_tokens)):
+                stale.append(
+                    f"    {canon.relative_to(pack_dir).as_posix()}: "
+                    f"Modrinth ships '{canon_fn}' but the CurseForge swap "
+                    f"({cf_src.relative_to(pack_dir).as_posix()}) pins '{swap_fn}'")
+        if stale:
+            raise SystemExit(
+                "ERR: stale CurseForge swap(s) — the pinned CurseForge file targets "
+                f"an older Minecraft build than the canonical pack (MC {mc_version}):\n"
+                + "\n".join(stale)
+                + f"\n  CurseForge has no {mc_version} build for these mods yet. Delete "
+                  "the offending scripts/cf-sources/<...>.pw.toml so the mod rides as a "
+                  "bundled override, and re-add the swap once CurseForge catches up.")
 
     if variant != DEFAULT_VARIANT:
         plat_root = pack_dir / PLATFORM_SOURCES_DIR / variant
