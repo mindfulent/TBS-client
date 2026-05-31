@@ -49,7 +49,8 @@ resolved state of every mod, and `docs/TBS-mod-strategy.md` for the full design 
 - **Tier 4 — HUD, UI, utility:** BetterF3, Mod Menu, Cloth Config + YACL, AppleSkin, WTHIT,
   JEI, Paginated Advancements, Mouse Wheelie, Controlling, Status Effect Bars,
   Crash Assistant, Blur+, Open Parties and Claims (claim/party UI + Xaero map overlay;
-  menu key defaults to `;`)
+  menu key defaults to `;`), Xaero's Minimap + Xaero's World Map (entity radar + cave
+  maps off by default)
 - **Tier 5 — Cross-side:** StreamCraft Live, Simple Voice Chat
 
 ## Resource packs & shader

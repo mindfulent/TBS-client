@@ -105,6 +105,8 @@ CURSEFORGE_EXCLUDED = [
     "resourcepacks/fresh-animations-extensions.pw.toml", # ARR; rides with main FA
     "mods/default-options.pw.toml",                      # ARR; sets OPAC keybind default, install separately
     "mods/balm.pw.toml",                                 # only a dep of Default Options; excluded with it
+    "mods/xaeros-minimap.pw.toml",                       # ARR; CF users install from CurseForge directly
+    "mods/xaeros-world-map.pw.toml",                     # ARR; CF users install from CurseForge directly
 ]
 
 # 2. SWAP: pack entries whose canonical Modrinth-sourced .pw.toml is replaced
@@ -135,7 +137,10 @@ CURSEFORGE_EXCLUSION_NOTE = (
     "FA family from CurseForge.\n"
     "- **Default Options** (+ **Balm**) — only sets the Open Parties and Claims "
     "menu key to semicolon by default (ARR license). Optional: install both from "
-    "CurseForge for the default, or just rebind the key yourself in Controls."
+    "CurseForge for the default, or just rebind the key yourself in Controls.\n"
+    "- **Xaero's Minimap** + **Xaero's World Map** — ARR license; install both from "
+    "CurseForge (one click in the CF app). They power the Open Parties and Claims "
+    "map overlay. The Modrinth build bundles them."
 )
 
 

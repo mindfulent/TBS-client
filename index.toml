@@ -2,11 +2,15 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "71ea2b5ad031973b8552ebac566d179b8fa7a801cd8adb8349b7e6fd2d2ed068"
+hash = "e726aaf2e337984019cfbe28296f9b8d36260a9449eca67fa3a10e3bf18bdbfb"
 
 [[files]]
 file = "README.md"
-hash = "293c5f82d9c8648ff0e01de19977afa5aee38fb4dde388fe8d100b53884d0a61"
+hash = "253464636ba2a9bdc16169bd6558d5758af4a98bee4728b6d8e617b1e14576a8"
+
+[[files]]
+file = "config/defaultoptions/extra/config/xaerominimap.txt"
+hash = "e5cc8ec39a0d22616bb1b1b25f1955af87f5eab70bb67c63086406cf7ac9912a"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
@@ -262,6 +266,16 @@ metafile = true
 [[files]]
 file = "mods/wthit.pw.toml"
 hash = "44e8c6da6fdba4023ef13c2dcc65343d64fd0d3e8386ab9a0ee283837ecb1983"
+metafile = true
+
+[[files]]
+file = "mods/xaeros-minimap.pw.toml"
+hash = "4f515855dfa5004732ef1b6fd2979c13e4928fe5c10847867c1b45ea71ab0056"
+metafile = true
+
+[[files]]
+file = "mods/xaeros-world-map.pw.toml"
+hash = "7370ca8360cb51734292ffd20692dcfd8938a417133b778cbda866f941c9f3bc"
 metafile = true
 
 [[files]]

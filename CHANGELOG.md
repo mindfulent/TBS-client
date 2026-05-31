@@ -2,6 +2,35 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.12] — 2026-05-31
+
+**Adds Xaero's maps** so the Open Parties and Claims overlay works — claims drawn
+on the minimap + fullscreen map, with right-click-to-claim on the world map.
+
+**Client mod changes:**
+- **Added Xaero's Minimap** `25.3.14` *(Modrinth — ARR, URL-referenced)*,
+  `side = "client"`.
+- **Added Xaero's World Map** `1.40.18` *(Modrinth — ARR, URL-referenced)*,
+  `side = "client"`. Both are client-side-only and safe on any vanilla server.
+
+**Survival-friendly defaults (entity radar + cave maps OFF):** the Fair-play
+edition is discontinued (no 26.1.2 build), so we use the regular Minimap with a
+shipped default that disables **entity radar** and **cave maps** —
+`config/xaerominimap.txt` (`entityRadar:false`, `caveMaps:0`), delivered via Default
+Options' `extra/` folder so it applies **only on a fresh install** and never
+overwrites an existing config.
+
+> **Not enforced + verify on first launch.** Without a Xaero server companion these
+> are *defaults*, not server-enforced — a player can re-enable radar/cave in the
+> Y → settings menu. And because the keys can't be runtime-verified here, confirm on
+> a fresh install: if radar/cave are still on, toggle them off in-game (Y menu) and
+> let us know so we can correct the shipped default.
+
+**CurseForge build note:** Xaero's Minimap + World Map (and Default Options + Balm)
+are excluded from the CurseForge `.zip` (ARR). CF-app users install Xaero's Minimap
++ World Map directly from CurseForge (one click). The Modrinth `.mrpack` includes
+everything.
+
 ## [1.1.11] — 2026-05-31
 
 **Lockstep sync with TBS-Server 1.1.11.** Brings the **Open Parties and Claims**
