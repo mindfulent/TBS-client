@@ -2,6 +2,17 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.13] — 2026-05-31
+
+**Removed Simple Voice Chat** (`2.6.17`) from the pack. Proximity voice is consolidating
+into **StreamCraft Live** — use StreamCraft for in-game voice going forward.
+
+- Removed `mods/simple-voice-chat.pw.toml` (canonical Modrinth entry) and its CurseForge
+  reference swap (`scripts/cf-sources/mods/simple-voice-chat.pw.toml`).
+- **StreamCraft Live is once again the only cross-side (`both`) mod** — reverts the
+  second-cross-side-mod exception that v1.0.1 introduced when SVC was added.
+- Lockstep release with TBS-Server 1.1.13.
+
 ## [1.1.12] — 2026-05-31
 
 **Adds Xaero's maps** so the Open Parties and Claims overlay works — claims drawn

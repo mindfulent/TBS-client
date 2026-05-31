@@ -9,10 +9,10 @@ Any player on stock vanilla 26.1.2 (+ StreamCraft) gets the full gameplay experi
 world, items, shops, mail, and progression. This pack exists for players who want to dial in
 visual fidelity, performance, and quality-of-life for long survival sessions.
 
-Every mod here is safe against a vanilla server. Two mods — **StreamCraft Live** and
-**Simple Voice Chat** — are shared with TBS-Server; both are optional per player, so a
-vanilla client without them still connects and plays the full game (see the cross-side
-contract in `docs/TBS-mod-strategy.md`).
+Every mod here is safe against a vanilla server. One mod — **StreamCraft Live** — is
+shared with TBS-Server; it is optional per player, so a vanilla client without it still
+connects and plays the full game (see the cross-side contract in
+`docs/TBS-mod-strategy.md`).
 
 ## Install
 
@@ -51,7 +51,7 @@ resolved state of every mod, and `docs/TBS-mod-strategy.md` for the full design 
   Crash Assistant, Blur+, Open Parties and Claims (claim/party UI + Xaero map overlay;
   menu key defaults to `;`), Xaero's Minimap + Xaero's World Map (entity radar + cave
   maps off by default)
-- **Tier 5 — Cross-side:** StreamCraft Live, Simple Voice Chat
+- **Tier 5 — Cross-side:** StreamCraft Live
 
 ## Resource packs & shader
 
@@ -101,6 +101,6 @@ setting inside Voxy's own config, enabled in-game.
 
 ## Version coupling
 
-TBS-Client and TBS-Server versions are **decoupled** — the mods whose versions must match
-across both packs are **StreamCraft Live** and **Simple Voice Chat**. Coordinate bumps of
-either as a synchronized release of both packs.
+TBS-Client and TBS-Server versions are **decoupled** — the mod whose version must match
+across both packs is **StreamCraft Live**. Coordinate bumps of it as a synchronized
+release of both packs.

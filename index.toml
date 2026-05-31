@@ -2,11 +2,11 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "e726aaf2e337984019cfbe28296f9b8d36260a9449eca67fa3a10e3bf18bdbfb"
+hash = "ddd8207925f076c2f644418eab40ff9caddbcee4f0a6fae64376d371ec46d823"
 
 [[files]]
 file = "README.md"
-hash = "253464636ba2a9bdc16169bd6558d5758af4a98bee4728b6d8e617b1e14576a8"
+hash = "248cd1275b8b5f1ce5a15bc730210a9339a92bae157c1071933f476d80fba78b"
 
 [[files]]
 file = "config/defaultoptions/extra/config/xaerominimap.txt"
@@ -22,7 +22,7 @@ hash = "a3fa673d13f7266eafacca2ea1cb83013ea017395b90e7ef45835a0d50c40a09"
 
 [[files]]
 file = "docs/TBS-mod-strategy.md"
-hash = "2042a13ad72a1fb3a593bc7e152ae96892331ab4d20bcab010e7470750fb2002"
+hash = "b2ec1e703b592d0a9fa5394ff82905ff6c7bf5ec61e66236d896cb5653162368"
 
 [[files]]
 file = "docs/resource-packs.md"
@@ -211,11 +211,6 @@ metafile = true
 [[files]]
 file = "mods/searchables.pw.toml"
 hash = "0447cd2618a02ea39e0bcbafa1424090cf95c4c392b94a39bf488342d30bd6a6"
-metafile = true
-
-[[files]]
-file = "mods/simple-voice-chat.pw.toml"
-hash = "2e210dbb2eca274d176c1f5d93d41638f9826153d358e9c428f1341331bc0ea5"
 metafile = true
 
 [[files]]

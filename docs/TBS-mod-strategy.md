@@ -113,7 +113,7 @@ For TBS-Server to add features without breaking the vanilla-client contract, eve
 - Any content mod that adds blocks / items / entities (Macaw's, Supplementaries, Farmer's Delight, etc.) — would desync with a vanilla server
 - Worldgen / structure / mob mods
 - Distant Horizons (Voxy is the chosen LOD solution instead)
-- Simple Voice Chat (requires server companion; out of scope unless the StreamCraft-only constraint is relaxed)
+- Simple Voice Chat (requires server companion; out of scope unless the StreamCraft-only constraint is relaxed — was shipped cross-side v1.0.1–1.1.12, removed in v1.1.13 as voice consolidates into StreamCraft)
 - Movement-modifying mods (Do a Barrel Roll, Better Climbing, Accurate Block Placement Reborn) — may trigger server anti-cheat or get rejected
 - Any mod that requires server-side install to function (Carry On, Trinkets, AxiomTool, Effortless, FallingTree client variant, WorldEdit, etc.)
 
@@ -171,7 +171,7 @@ For TBS-Server to add features without breaking the vanilla-client contract, eve
 - All content mods that register new blocks / items / entities without Polymer (Macaw's, Supplementaries, Farmer's Delight, etc.) — would break vanilla-client joinability
 - Worldgen / structure / mob mods that rely on client knowledge of new content (Incendium, Nullscape, Friends & Foes, etc.)
 - All client-only mods (Sodium, Iris, ETF/EMF, etc.) — don't load on a dedicated server
-- Simple Voice Chat — requires the SVC client mod, violating the StreamCraft-only contract
+- Simple Voice Chat — requires the SVC client mod, violating the StreamCraft-only contract (was shipped cross-side v1.0.1–1.1.12, removed in v1.1.13 as voice consolidates into StreamCraft)
 - JourneyMap / Xaero's server companions — would require corresponding client install
 
 ### Server resource pack (optional)
