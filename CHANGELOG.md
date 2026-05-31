@@ -2,6 +2,15 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.10] — 2026-05-31
+
+**No client mod changes.** Version aligned with TBS-Server 1.1.10 per the lockstep
+policy. The server gained **Open Parties and Claims** (Tier S5) for anti-theft chunk
+claims — protection is server-enforced and driven entirely by chat commands
+(`/openpac-claims`, `/openpac-parties`, `/opm`), so vanilla and modded clients alike
+need nothing installed. (The OPAC client mod — claim UI + Xaero map overlay — is a
+possible future addition here, not shipped in this release.)
+
 ## [1.1.9] — 2026-05-30
 
 **Lockstep sync with TBS-Server 1.1.9.** The server gained **Sit Anywhere!**
