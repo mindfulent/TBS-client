@@ -18,3 +18,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Minecraft local client state (not pack content)
+servers.dat
+servers.dat_old

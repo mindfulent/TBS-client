@@ -2,6 +2,35 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.9] — 2026-05-30
+
+**Lockstep sync with TBS-Server 1.1.9.** The server gained **Sit Anywhere!**
+(Tier S5 gameplay augment) — a server-side, vanilla-client-safe sitting mod
+(datapack logic in a Fabric wrapper, no new client-visible content). Nothing to
+install client-side for sitting: vanilla and modded players alike can right-click
+stairs/slabs to sit once running the 1.1.9 server.
+
+**Client mod changes:**
+- **Removed Cubes Without Borders** (`cwb-4.0.3+26.1.jar`) — was Tier 4
+  (HUD/UI/utility).
+- **Added Bridging Mod** `2.6.6+26.1` *(CurseForge project `533942`, file
+  `7915819`)* — bridging assist / placement helper, Tier 3 (camera, controls,
+  animations). Client-side QoL.
+
+**Dependency re-sourcing (CurseForge-first compliance):**
+- **Fabric API** and **YACL (YetAnotherConfigLib)** re-sourced from Modrinth to
+  CurseForge (now `mode = "metadata:curseforge"`), matching the pack's
+  CurseForge-first policy. Same mods, same function — distribution source only.
+
+## [1.1.8] — 2026-05-30
+
+**No client mod changes.** Version aligned with TBS-Server 1.1.8 per the lockstep
+policy. The real fix lands server-side: JEI is now installed on TBS-Server so it
+can sync recipes to the JEI already in this client pack. Since MC 1.21.2 recipes
+are held server-side, JEI on the client alone reported "missing recipes" until the
+server gained a matching JEI build (`26.1.2-fabric-29.6.2.31`, identical to this
+pack's copy). No action needed by players beyond running the 1.1.8 server.
+
 ## [1.1.7] — 2026-05-28
 
 **Updated:**

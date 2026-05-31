@@ -2,11 +2,11 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "cefc36c23463fbd62296a11e651332081127d7810b1e8f738dfef19f4217716f"
+hash = "038a8b04a48c2c911b94062b5e3a4706f16f07bb851afcbac64653e2940cb729"
 
 [[files]]
 file = "README.md"
-hash = "ede720d4796fdc92cea60225c7c4933a14cfbe03d3567ef95e1274c759f5077c"
+hash = "5e9638109e133b423e5073778fef52323dbeecdd1df7912c19e444fedea002f1"
 
 [[files]]
 file = "docs/MOD_LIST.md"
@@ -269,10 +269,6 @@ metafile = true
 file = "resourcepacks/patrix-32x.pw.toml"
 hash = "f0d1ddd5e1a0cf9d4eb55696f10b20373c6838036fe0164a5163ab45ed933cfb"
 metafile = true
-
-[[files]]
-file = "servers.dat"
-hash = "fd7a3cfb6c0db4101f790400cf7b166835304ecd155552034436d658bbcafd8e"
 
 [[files]]
 file = "shaderpacks/BSL_v10.0.zip"

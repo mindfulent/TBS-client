@@ -44,10 +44,10 @@ resolved state of every mod, and `docs/TBS-mod-strategy.md` for the full design 
 - **Tier 2 — Visual range & quality:** Voxy, Continuity, ETF + EMF, Falling Leaves,
   Visuality, Subtle Effects, Sound Physics Remastered, AmbientSounds
 - **Tier 3 — Camera, controls, animations:** Camera Utils, Zoomify, Not Enough Animations,
-  First-person Model, Skin Layers 3D, Smooth Swapping
+  First-person Model, Skin Layers 3D, Smooth Swapping, Bridging Mod
 - **Tier 4 — HUD, UI, utility:** BetterF3, Mod Menu, Cloth Config + YACL, AppleSkin, WTHIT,
   JEI, Paginated Advancements, Mouse Wheelie, Controlling, Status Effect Bars,
-  Crash Assistant, Blur+, Cubes Without Borders
+  Crash Assistant, Blur+
 - **Tier 5 — Cross-side:** StreamCraft Live, Simple Voice Chat
 
 ## Resource packs & shader
