@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "92f3d5456696b4b378518f8b5b8c1dbe0b5f9005605a72a532a814005f52c438"
+hash = "74b90b11dcbf54167c381307858fc309300c48538b59530687f455a8d77728b4"
 
 [[files]]
 file = "README.md"
@@ -234,9 +234,8 @@ hash = "57ff5d7dfa13ffa3924b77b3cf2eea2d6accb1cde92ff5272b8de445932d7e56"
 metafile = true
 
 [[files]]
-file = "mods/streamcraft-live.pw.toml"
-hash = "0331cd02de14a0b4cb6c7aeb54318e561471fa7524904430b8ff30c3db13cf2e"
-metafile = true
+file = "mods/streamcraft-0.10.2+mc26.1.2.jar"
+hash = "06ab9441112d7e937b0272db1edc2787786c2eec8ae5abed1135d95d7cd196d5"
 
 [[files]]
 file = "mods/subtle-effects.pw.toml"

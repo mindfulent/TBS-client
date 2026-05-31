@@ -7,6 +7,7 @@
 # Publish automation + its docs
 scripts/
 PUBLISHING.md
+RC-TESTING.md
 
 # Safety net: TBS-Client is a Fabric modpack, plugins/ should always be empty.
 # `cf install <slug>` of a Bukkit-category project (e.g. Simple Voice Chat)

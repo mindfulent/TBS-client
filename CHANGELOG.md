@@ -2,6 +2,18 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.14-rc.1] — 2026-05-31 *(RC branch `rc/streamcraft-0.10.2` — NOT on `main`)*
+
+**Release-candidate test build.** Bundles **StreamCraft 0.10.2** (voice device-race fix, not
+yet on Modrinth) as a loose jar instead of the published Modrinth reference, hand-shipped as
+`.mrpack` via a GitHub **pre-release** — CurseForge and Modrinth are skipped. `main` stays on
+the published 0.9.9 reference; this entry lives only on the RC branch.
+
+- Bundled `streamcraft-0.10.2+mc26.1.2.jar` (Windows/standard) and built a matching
+  `-macos-arm64` mrpack from `streamcraft-0.10.2+mc26.1.2-macos-arm64.jar`. Only those two
+  platforms are built; other variants stay on published 0.9.9.
+- See `RC-TESTING.md` for the reusable RC path.
+
 ## [1.1.13] — 2026-05-31
 
 **Removed Simple Voice Chat** (`2.6.17`) from the pack. Proximity voice is consolidating
