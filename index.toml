@@ -2,11 +2,15 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "0f16ba0b90190c4c23af195577441bfe00f818873d6c0767783ef1f19becf57d"
+hash = "71ea2b5ad031973b8552ebac566d179b8fa7a801cd8adb8349b7e6fd2d2ed068"
 
 [[files]]
 file = "README.md"
-hash = "5e9638109e133b423e5073778fef52323dbeecdd1df7912c19e444fedea002f1"
+hash = "293c5f82d9c8648ff0e01de19977afa5aee38fb4dde388fe8d100b53884d0a61"
+
+[[files]]
+file = "config/defaultoptions/options.txt"
+hash = "4e948ead16db1202c969cd6f88a31339a14dd56ab26f6cd9d2864d80dc7e653b"
 
 [[files]]
 file = "docs/MOD_LIST.md"
@@ -46,6 +50,11 @@ hash = "87718317315b53cbe8c6985bf4c6551f8077e45f36f956f8a6f25a2fc08b4278"
 metafile = true
 
 [[files]]
+file = "mods/balm.pw.toml"
+hash = "8409659ff176efd0fa939c0803c3e141948016ec02f524d2dc79d614b0c4d862"
+metafile = true
+
+[[files]]
 file = "mods/betterf3.pw.toml"
 hash = "2ea7a2ad12d17b1d6cba5908f781a43be06220b6e29c8d88546c306ff5f40c06"
 metafile = true
@@ -57,12 +66,12 @@ metafile = true
 
 [[files]]
 file = "mods/bridging-mod.pw.toml"
-hash = "140443a6bbbefb50812d1e5d3e25b60abc56504945c096e853bf303eedcd01e3"
+hash = "8551d3f48a07729fce6d4640f14e26d2a226588c178ab1bdbdb380474717c496"
 metafile = true
 
 [[files]]
 file = "mods/camera-utils.pw.toml"
-hash = "5815d5a135c256ef1ee4e958d16fb7f87b18a84f7ee9be6f69ab4bbac120b32d"
+hash = "b1884e24c6f409e3434ec232400d44470e302683731fec143a86e2768f22ff61"
 metafile = true
 
 [[files]]
@@ -82,12 +91,17 @@ metafile = true
 
 [[files]]
 file = "mods/crash-assistant.pw.toml"
-hash = "b0ee602e15644fb8c5a3c49e3decbf5453c2e7ae9473f5b249f65cbcf9a1a944"
+hash = "4acd966b40c17bfb7c9905863da2f887b2f4a1ca0e1dfce24a243a191ed4ecff"
 metafile = true
 
 [[files]]
 file = "mods/creativecore.pw.toml"
 hash = "5288e5f018da8bfc471b7519aa7f8086bc2eab5bc3eb6571d7823c3edaeb64e3"
+metafile = true
+
+[[files]]
+file = "mods/default-options.pw.toml"
+hash = "d234c52ed8eb2ad440ee8b1c3b24108d920b5ae63f252d4ed60e242ce7468dfb"
 metafile = true
 
 [[files]]
@@ -107,7 +121,7 @@ metafile = true
 
 [[files]]
 file = "mods/fabric-api.pw.toml"
-hash = "0e4c05edb41c24531e2a5df5be5d0a871a961ac61a6794ec98c4b80347a467a9"
+hash = "a68b95fb73c6d2bd3486e607eaa109e7e9b0e60bb8ef524b8f47a25fe0bc2510"
 metafile = true
 
 [[files]]
@@ -128,6 +142,11 @@ metafile = true
 [[files]]
 file = "mods/first-person-model.pw.toml"
 hash = "46061206862d37d7c951508d8593b9a9743b1b95555359e368a55ef70fac9749"
+metafile = true
+
+[[files]]
+file = "mods/forge-config-api-port.pw.toml"
+hash = "05a1744358c73ad7f20935f88d7fdb047465d0c8b2d921779c7a8bdcdde461ac"
 metafile = true
 
 [[files]]
@@ -176,6 +195,11 @@ hash = "74c2e929a180453beeca5106079f281e70ff0ed56854a52b4aab18db3f18d1cd"
 metafile = true
 
 [[files]]
+file = "mods/open-parties-and-claims.pw.toml"
+hash = "85852f9f3dd41ec0a233eaefeb5e52ce23e2e180fef9232cd8040689cb4747cf"
+metafile = true
+
+[[files]]
 file = "mods/paginated-advancements.pw.toml"
 hash = "15108bc2910b96c88e5f6acb5e594440bdda8ff80c8080ba2dfcea622be8b02c"
 metafile = true
@@ -212,7 +236,7 @@ metafile = true
 
 [[files]]
 file = "mods/streamcraft-live.pw.toml"
-hash = "97f4b0275b86f6859880a54bcb97a33dc3fd6123882b1f92747decd922474055"
+hash = "0331cd02de14a0b4cb6c7aeb54318e561471fa7524904430b8ff30c3db13cf2e"
 metafile = true
 
 [[files]]
@@ -242,7 +266,7 @@ metafile = true
 
 [[files]]
 file = "mods/yacl.pw.toml"
-hash = "74addc10c8ec0d080f405c5e03a19b78e1df8ad4a1e26cba15d34a75afd470b7"
+hash = "8b74939820e5304e916071cf86e04a0fe2cbe55336c8b05bdc33a0310298ff80"
 metafile = true
 
 [[files]]

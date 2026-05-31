@@ -103,6 +103,8 @@ CURSEFORGE_EXCLUDED = [
     "resourcepacks/fresh-animations.pw.toml",            # "see terms" license; install separately
     "resourcepacks/fresh-animations-emissive.pw.toml",   # ARR; rides with main FA
     "resourcepacks/fresh-animations-extensions.pw.toml", # ARR; rides with main FA
+    "mods/default-options.pw.toml",                      # ARR; sets OPAC keybind default, install separately
+    "mods/balm.pw.toml",                                 # only a dep of Default Options; excluded with it
 ]
 
 # 2. SWAP: pack entries whose canonical Modrinth-sourced .pw.toml is replaced
@@ -130,7 +132,10 @@ CURSEFORGE_EXCLUSION_NOTE = (
     "- **Complementary Shaders – Reimagined** — install from its CurseForge "
     "page. The bundled **Patrix 32x** resource pack pairs with it for labPBR.\n"
     "- **Fresh Animations** (main pack + Emissive + Extensions) — install the "
-    "FA family from CurseForge."
+    "FA family from CurseForge.\n"
+    "- **Default Options** (+ **Balm**) — only sets the Open Parties and Claims "
+    "menu key to semicolon by default (ARR license). Optional: install both from "
+    "CurseForge for the default, or just rebind the key yourself in Controls."
 )
 
 

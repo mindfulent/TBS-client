@@ -2,6 +2,34 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.11] — 2026-05-31
+
+**Lockstep sync with TBS-Server 1.1.11.** Brings the **Open Parties and Claims**
+client to TheBlockSurvival so residents get the in-game claim UI + Xaero map
+overlay (the server has run OPAC server-side since 1.1.10 — vanilla clients still
+manage claims via chat commands).
+
+**Client mod changes:**
+- **Added Open Parties and Claims** `0.26.3` *(CurseForge project `636608`, file
+  `8091537`)* — native 26.1.2 build, `side = "client"`. Opens the claim/party UI
+  and draws claims on Xaero's maps. Dependency **Forge Config API Port** added
+  *(CurseForge project `547434`)*, also `side = "client"`.
+- **Added Default Options** `26.1.0.1` *(Modrinth — ARR, URL-referenced for
+  redistribution compliance)* + its dependency **Balm** `26.1.2.6` *(Modrinth)*.
+  Sole purpose: ship a non-destructive keybind default.
+
+**Default keybind:** OPAC's menu key defaults to **semicolon (`;`)** instead of its
+built-in apostrophe (`'`), via `config/defaultoptions/options.txt`
+(`key_gui.xaero_pac_key_open_menu:key.keyboard.semicolon`). Default Options applies
+this only on a fresh install / when the key is unset — it never overrides a binding
+you've already chosen, so existing installs keep whatever they have set (rebind in
+Controls → "Open Parties and Claims Menu" if you want semicolon).
+
+**CurseForge build note:** Default Options + Balm are excluded from the CurseForge
+`.zip` (ARR license) — CF-app users get the OPAC client but keep the apostrophe
+default unless they install Default Options + Balm themselves, or rebind manually.
+The Modrinth `.mrpack` includes everything.
+
 ## [1.1.10] — 2026-05-31
 
 **No client mod changes.** Version aligned with TBS-Server 1.1.10 per the lockstep

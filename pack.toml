@@ -1,12 +1,12 @@
 name = "TheBlockSurvival"
 author = "Slash"
-version = "1.1.10"
+version = "1.1.11"
 pack-format = "packwiz:1.1.0"
 
 [index]
 file = "index.toml"
 hash-format = "sha256"
-hash = "84addd535704c19d5cccbd022a6987aa5ff6502ff5fb538251cd2b905693aa27"
+hash = "05b1ac72f916f163f415486c9f7ee8657b6c040f3359df4e980c4c0959a6d367"
 
 [versions]
 fabric = "0.19.2"
