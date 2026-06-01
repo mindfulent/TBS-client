@@ -50,8 +50,13 @@ resolved state of every mod, and `docs/TBS-mod-strategy.md` for the full design 
   JEI, Paginated Advancements, Mouse Wheelie, Controlling, Status Effect Bars,
   Crash Assistant, Blur+, Open Parties and Claims (claim/party UI + Xaero map overlay;
   menu key defaults to `;`), Xaero's Minimap + Xaero's World Map (entity radar + cave
-  maps off by default)
+  maps off by default; world map key defaults to `N`)
 - **Tier 5 — Cross-side:** StreamCraft Live
+
+**Shipped defaults** (seeded by Default Options on fresh installs only):
+TheBlockSurvival pre-listed as a server; "Open Parties and Claims Menu" → `;`;
+Xaero "Open World Map" → `N`; Xaero "Toggle Minimap" → `K` (Iris "Toggle Shaders"
+unbound to free `K`); Ambient/Environment sound volume → 20%.
 
 ## Resource packs & shader
 

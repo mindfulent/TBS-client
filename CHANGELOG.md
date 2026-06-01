@@ -2,6 +2,49 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.1.15] — 2026-05-31
+
+**Client UX defaults** — restores the missing default server and ships new keybind
+and sound-volume defaults, all seeded by the **Default Options** mod (applied on
+**fresh installs only**; existing instances keep their own `options.txt` /
+`servers.dat` and must rebind / reset manually).
+
+### Fixed
+
+- **Default server entry restored.** Fresh installs once again show
+  **TheBlockSurvival** (`theblocksurvival.com`) pre-listed on the multiplayer
+  screen. The default now ships at `config/defaultoptions/extra/servers.dat`
+  (Default Options copies `extra/` files into the instance when absent).
+- **`.packwizignore` no longer drops the shipped server list.** The bare
+  `servers.dat` / `servers.dat_old` patterns matched that basename *at any depth*
+  (gitignore semantics), so they silently ignored the new
+  `config/defaultoptions/extra/servers.dat` too — it never reached `index.toml`
+  or the exported `.mrpack`. Anchored both patterns to the pack root
+  (`/servers.dat`, `/servers.dat_old`) so only the maintainer's personal
+  root-level list is excluded.
+- **Keybind defaults now actually seed on fresh installs.** Default Options reads
+  keybind defaults from a dedicated `config/defaultoptions/keybindings.txt` — its
+  `options.txt` handler explicitly *skips* every `key_*` line. The four keybind
+  defaults below had been placed in `options.txt`, where the mod silently ignored
+  them; they now ship in `keybindings.txt` and apply correctly. (Ambient volume is a
+  non-`key_` option and stays in `options.txt`, where it was always applied.)
+
+### Changed
+
+- **"Open Parties and Claims Menu" keybind default → `;` (semicolon).** OPAC's
+  built-in default is `'` (apostrophe, GLFW 39), which collides with StreamCraft
+  (`key_gui.xaero_pac_key_open_menu`). The semicolon default first shipped in
+  v1.1.11; this confirms it and documents the conflict it resolves.
+- **Xaero's World Map "Open World Map" keybind default → `N`**, off the default
+  `M` (`key_gui.xaero_open_map`), freeing `M`.
+- **Ambient/Environment sound volume default → 20%** (`soundCategory_ambient:0.2`,
+  was 100%). Governs vanilla ambient audio and the AmbientSounds mod's output.
+- **Iris "Toggle Shaders" keybind unbound** (`iris.keybind.toggleShaders`, was `K`,
+  GLFW 75). Freed `K` to avoid accidental shader toggling; bound to nothing
+  (`key.keyboard.unknown`) — re-bindable in Controls.
+- **Xaero's Minimap "Toggle Minimap" keybind default → `K`** (`gui.xaero_toggle_map`),
+  taking over the key vacated by Iris.
+
 ## [1.1.14-rc.1] — 2026-05-31 *(RC branch `rc/streamcraft-0.10.2` — NOT on `main`)*
 
 **Release-candidate test build.** Bundles **StreamCraft 0.10.2** (voice device-race fix, not

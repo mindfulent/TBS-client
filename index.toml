@@ -2,19 +2,27 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "74b90b11dcbf54167c381307858fc309300c48538b59530687f455a8d77728b4"
+hash = "fcc31d6ee3d2e614b9417583fd07d6fd0ddf76116ee874f609bb939f1bf35586"
 
 [[files]]
 file = "README.md"
-hash = "248cd1275b8b5f1ce5a15bc730210a9339a92bae157c1071933f476d80fba78b"
+hash = "cfb65d14395d4ebe6a6bbe34c935bd6052c58b9196a5f0f028916d03880103e9"
 
 [[files]]
 file = "config/defaultoptions/extra/config/xaerominimap.txt"
 hash = "e5cc8ec39a0d22616bb1b1b25f1955af87f5eab70bb67c63086406cf7ac9912a"
 
 [[files]]
+file = "config/defaultoptions/extra/servers.dat"
+hash = "fd7a3cfb6c0db4101f790400cf7b166835304ecd155552034436d658bbcafd8e"
+
+[[files]]
+file = "config/defaultoptions/keybindings.txt"
+hash = "2807e200f3faa0bd8e53bc051d8fb139d25b3b3efc064347738d5cc9f6e3250e"
+
+[[files]]
 file = "config/defaultoptions/options.txt"
-hash = "4e948ead16db1202c969cd6f88a31339a14dd56ab26f6cd9d2864d80dc7e653b"
+hash = "e78483353d02f11045bf555c921f090439a1dce84af71891414e99c3f30ff3fe"
 
 [[files]]
 file = "docs/MOD_LIST.md"

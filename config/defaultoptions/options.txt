@@ -1,1 +1,1 @@
-key_gui.xaero_pac_key_open_menu:key.keyboard.semicolon
+soundCategory_ambient:0.2

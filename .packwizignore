@@ -40,8 +40,13 @@ packwiz.exe
 # Minecraft local client state — a maintainer's personal saved-server list,
 # written into the pack root when packwiz is run from a live game instance.
 # Not pack content; must never ride in the distributed .mrpack.
-servers.dat
-servers.dat_old
+#
+# Anchored to the pack root with a leading slash. A bare `servers.dat` is a
+# gitignore basename match at ANY depth, which would also drop the DELIBERATE
+# default server list we ship at config/defaultoptions/extra/servers.dat
+# (Default Options seeds it onto fresh installs). Only the root file is personal.
+/servers.dat
+/servers.dat_old
 
 # Build output and VCS
 dist/
