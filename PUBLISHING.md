@@ -75,7 +75,7 @@ then fill in the fields below and upload the icon + gallery screenshots.
 | Categories | `optimization`, `vanilla-like`, `multiplayer` |
 | Environments | Client: **required** · Server: **unsupported** |
 | License | Decision — see "License" below |
-| Source / Issues | Link `github.com/mindfulent/TBS-client` only if that repo is public |
+| Source / Issues | Link `github.com/slashdaemon/TBS-client` only if that repo is public |
 
 ### Summary (one sentence, ≤256 chars)
 

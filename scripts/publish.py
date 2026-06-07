@@ -69,7 +69,7 @@ except ImportError:
 
 MODRINTH_API = "https://api.modrinth.com/v2"
 CURSEFORGE_API = "https://minecraft.curseforge.com/api"
-USER_AGENT = "mindfulent/TheBlockSurvival publish.py (jon@papp.as)"
+USER_AGENT = "slashdaemon/TheBlockSurvival publish.py (jon@papp.as)"
 
 DEFAULT_MODRINTH_PROJECT = "theblocksurvival"
 # Loader the .mrpack manifest declares. TheBlockSurvival is a Fabric pack.
