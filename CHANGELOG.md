@@ -19,6 +19,21 @@ Display Block upgrades, and a new Terms/age gate. Lockstep release with TBS-Serv
 - No other mod added, removed, or changed. Run the **same StreamCraft version on client and
   server** — both packs ship 0.12.1.
 
+### Default-options seeding hotfix (2026-06-09)
+
+The initial 1.2.0 build shipped with two seeded defaults failing to apply on a fresh
+install: the **direct-connect TheBlockSurvival server entry** and the **Open Parties and
+Claims menu keybind** (`;`). Corrected in-place — assets re-uploaded, no version bump. The
+**minimap default was unaffected** and continued to apply.
+
+- The seeded `config/defaultoptions/extra/servers.dat` was being stripped from the export:
+  an unanchored `servers.dat` rule in `.packwizignore`/`.gitignore` matched at any depth
+  (packwiz uses gitignore semantics) and deleted it. Anchored both rules to `/servers.dat`
+  so they only match the maintainer's local list at the pack root.
+- The OPAC keybind lived in `config/defaultoptions/options.txt`, which the Default Options
+  mod does not apply to keymappings (it has a dedicated handler). Moved it to
+  `config/defaultoptions/keybindings.txt` and removed the dead `options.txt`.
+
 ## [1.1.13] — 2026-05-31
 
 **Removed Simple Voice Chat** (`2.6.17`) from the pack. Proximity voice is consolidating
