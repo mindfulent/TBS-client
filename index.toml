@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "92f3d5456696b4b378518f8b5b8c1dbe0b5f9005605a72a532a814005f52c438"
+hash = "f08a7d49ca39a1f34474ad61760794828ebc72e2e4d647ddccf008e9c6308614"
 
 [[files]]
 file = "README.md"
@@ -14,7 +14,7 @@ hash = "e5cc8ec39a0d22616bb1b1b25f1955af87f5eab70bb67c63086406cf7ac9912a"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
-hash = "4e948ead16db1202c969cd6f88a31339a14dd56ab26f6cd9d2864d80dc7e653b"
+hash = "e29d9d0b9a2b6c9f707540bc355848be56990fa549d0dc48c4b12dc115c39533"
 
 [[files]]
 file = "docs/MOD_LIST.md"
@@ -235,7 +235,7 @@ metafile = true
 
 [[files]]
 file = "mods/streamcraft-live.pw.toml"
-hash = "0331cd02de14a0b4cb6c7aeb54318e561471fa7524904430b8ff30c3db13cf2e"
+hash = "002c9249d63d0a04e2b277904c38b45e4400bd4e0d7a9b85d8911513482b7be5"
 metafile = true
 
 [[files]]

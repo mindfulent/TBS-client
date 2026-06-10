@@ -2,6 +2,23 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.2.0] — 2026-06-09
+
+**StreamCraft Live 0.9.9 → 0.12.1.** The first big cross-side update since voice moved out of
+Simple Voice Chat — in-world voice now lives in StreamCraft, alongside native Linux capture,
+Display Block upgrades, and a new Terms/age gate. Lockstep release with TBS-Server 1.2.0.
+
+- Repinned **StreamCraft Live → 0.12.1+mc26.1.2** (Modrinth `DEgY8AQ8`) across the base pack
+  and all four platform-source variants (linux, linux-aarch64, macos-arm64, macos-x86_64);
+  the CurseForge swap repinned to CF file `8224184`.
+- StreamCraft highlights since 0.9.9: in-world **voice chat** (open-mic / push-to-talk /
+  voice-activated, per-player volume, echo cancellation & noise suppression); **native Linux**
+  webcam, screen, and audio capture (manually tested on Fedora GNOME + Arch KDE Plasma);
+  Display Block **auto-crop black bars / pixel-precise placement / opaque backdrops**; macOS
+  capture-stall fixes; and a first-run **Terms of Use & age gate** before camera/screen/voice.
+- No other mod added, removed, or changed. Run the **same StreamCraft version on client and
+  server** — both packs ship 0.12.1.
+
 ## [1.1.13] — 2026-05-31
 
 **Removed Simple Voice Chat** (`2.6.17`) from the pack. Proximity voice is consolidating
