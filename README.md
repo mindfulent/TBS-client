@@ -68,17 +68,22 @@ leave it all off for a lighter client. See `docs/resource-packs.md` for the full
 | Fresh Animations `v1.10.5` | on | Smooth entity animations. Driven by the bundled **EMF + ETF**. |
 | Fresh Animations: Emissive | on | Restores Fresh Animations glowing-eye textures under shaders. |
 | Fresh Animations: Extensions | on | Extra Fresh Animations models (Classic Horses, Objects). |
+| Vanilla Tweaks (curated) | on | 10 vanilla-friendly tweaks — Clearer Water, Borderless Glass, Variated Logs/Bookshelves/Cobblestone/Planks, Ore Borders, Brighter Nether, Lower Fire/Shield. **Bundled** (committed zip, not a per-player toggle); pure-vanilla textures, needs no extra mod. See `credits.txt`. |
 
 **In-game resource-pack load order** (top wins, top → bottom):
 
 1. Fresh Animations: Emissive
 2. Fresh Animations: Extensions
 3. Fresh Animations
-4. Patrix 32x
+4. Vanilla Tweaks (curated)
+5. Patrix 32x
 
-The Fresh Animations packs must sit above Patrix so FA's entity models take priority;
-Patrix's block-level PBR textures still apply underneath. The shader is selected
-separately in the Iris menu, not the resource-pack list.
+The Fresh Animations packs sit above both Vanilla Tweaks and Patrix so FA's entity models
+take priority; the block-level texture packs apply underneath (FA and Vanilla Tweaks don't
+overlap — one is entities, the other is blocks). The on-by-default selection is applied on
+first launch by the **Default Options** mod (`config/defaultoptions/options.txt` →
+`resourcePacks`); a player's later changes are never overwritten on update. The shader is
+selected separately in the Iris menu, not the resource-pack list.
 
 **Performance:** the full stack (shader + Patrix + Fresh Animations) targets roughly an
 RTX 3060 / 8 GB-VRAM-class machine at ~60 FPS / 1080p. On weaker hardware, drop

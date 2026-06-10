@@ -2,6 +2,25 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.2.1] — 2026-06-10
+
+**Bundled a curated Vanilla Tweaks resource pack + made the default resource-pack selection
+actually apply on fresh installs.** Lockstep release with TBS-Server 1.2.1 (version-only on
+the server — no server content changed).
+
+- Added `resourcepacks/VanillaTweaks.zip` — 10 vanilla-friendly tweaks generated from
+  [vanillatweaks.net](https://vanillatweaks.net) for MC 26.1: Clearer Water, Borderless
+  Glass, Variated Birch Logs / Bookshelves / Cobblestone / Planks, Ore Borders, Brighter
+  Nether, Lower Fire, Lower Shield. Pure-vanilla textures (no CIT, no OptiFine CTM) — needs
+  no extra mod and is invisible to vanilla clients (resource packs never affect server join).
+  Committed as a bundled override (not a per-player toggle); credited per the Vanilla Tweaks
+  terms in `credits.txt`. The pack remains free.
+- Recreated `config/defaultoptions/options.txt` with a `resourcePacks` line seeding the
+  on-by-default selection (Vanilla Tweaks + the three Fresh Animations packs, in load order).
+  The Default Options mod applies this on first launch and never overrides a player's later
+  choice. This also fixes a latent issue where the Fresh Animations "on by default" packs had
+  no seed and so were not actually auto-enabled on a clean install.
+
 ## [1.2.0] — 2026-06-09
 
 **StreamCraft Live 0.9.9 → 0.12.1.** The first big cross-side update since voice moved out of

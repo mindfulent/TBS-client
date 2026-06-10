@@ -2,11 +2,11 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "2577ce17b168cb0d267bc20868d52e9f794d80ef93b55960b23d56030fcecdf5"
+hash = "149811c66475f622b38a44d8628e236a848644008a089ec976cf6e24a0707c5b"
 
 [[files]]
 file = "README.md"
-hash = "248cd1275b8b5f1ce5a15bc730210a9339a92bae157c1071933f476d80fba78b"
+hash = "5360f8e222022ef263ab30dc3a795dc4d2db8833ce6224b023ea6e19644ee229"
 
 [[files]]
 file = "config/defaultoptions/extra/config/xaerominimap.txt"
@@ -19,6 +19,14 @@ hash = "fd7a3cfb6c0db4101f790400cf7b166835304ecd155552034436d658bbcafd8e"
 [[files]]
 file = "config/defaultoptions/keybindings.txt"
 hash = "66edd74aee573daa17eeb1adac03d5b2789501e9284f369de801c2375521b3aa"
+
+[[files]]
+file = "config/defaultoptions/options.txt"
+hash = "00d60313d0e25923b91e054aa9db39a24c51da97848d25107e643956b8eed25e"
+
+[[files]]
+file = "credits.txt"
+hash = "16eefa6ced4793cca79c9e74ebd47eaf5b50a5b227156c42a2ef13c4837a8740"
 
 [[files]]
 file = "docs/MOD_LIST.md"
@@ -286,6 +294,10 @@ metafile = true
 file = "mods/zoomify.pw.toml"
 hash = "8891294389220bc0b9a6f3ffa48963649464b64705df6d90f109b6a6efb1c625"
 metafile = true
+
+[[files]]
+file = "resourcepacks/VanillaTweaks.zip"
+hash = "fe378e897bbfe161154ffd5b19d3cbf78d35722ffb9408fffa3582ccf31a6b18"
 
 [[files]]
 file = "resourcepacks/fresh-animations-emissive.pw.toml"

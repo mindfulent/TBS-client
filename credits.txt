@@ -1,0 +1,18 @@
+The Block Survival — Third-Party Resource Pack Credits
+======================================================
+
+Vanilla Tweaks  (https://vanillatweaks.net)
+-------------------------------------------
+This modpack bundles a curated Vanilla Tweaks resource pack
+(resourcepacks/VanillaTweaks.zip), generated from vanillatweaks.net for
+Minecraft 26.1 and shipped as part of The Block Survival's larger resource-pack
+stack (Fresh Animations, Patrix, Complementary shaders) and mod configuration.
+
+Included Vanilla Tweaks packs:
+  Clearer Water, Lower Fire, Lower Shield, Borderless Glass, Variated Birch Logs,
+  Variated Bookshelves, Variated Cobblestone, Variated Planks, Ore Borders,
+  Brighter Nether.
+
+All Vanilla Tweaks content is (c) Vanilla Tweaks and its contributors, used under
+the Vanilla Tweaks Terms (https://vanillatweaks.net/terms/). The Block Survival is
+free to download and play. Please support Vanilla Tweaks at https://vanillatweaks.net.
