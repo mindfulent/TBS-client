@@ -1,1 +1,5 @@
 key_gui.xaero_pac_key_open_menu:key.keyboard.semicolon
+key_gui.xaero_open_map:key.keyboard.n
+key_gui.xaero_toggle_map:key.keyboard.k
+key_iris.keybind.toggleShaders:key.keyboard.unknown
+key_iris.keybind.reload:key.keyboard.unknown

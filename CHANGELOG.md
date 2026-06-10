@@ -30,9 +30,13 @@ Claims menu keybind** (`;`). Corrected in-place — assets re-uploaded, no versi
   an unanchored `servers.dat` rule in `.packwizignore`/`.gitignore` matched at any depth
   (packwiz uses gitignore semantics) and deleted it. Anchored both rules to `/servers.dat`
   so they only match the maintainer's local list at the pack root.
-- The OPAC keybind lived in `config/defaultoptions/options.txt`, which the Default Options
-  mod does not apply to keymappings (it has a dedicated handler). Moved it to
+- Keybind defaults lived in `config/defaultoptions/options.txt`, which the Default Options
+  mod does not apply to keymappings (it has a dedicated handler). Moved them to
   `config/defaultoptions/keybindings.txt` and removed the dead `options.txt`.
+- Resolved keybind conflicts in the seeded defaults: Xaero **Open Map** `M → N` (M was
+  colliding with StreamCraft's mute, which defaults to M); Xaero **Toggle Minimap** `→ K`;
+  Iris **Toggle Shaders** and **Reload Shaders** unbound (K is now the minimap toggle, and
+  stray shader reloads are off). OPAC menu stays on `;`.
 
 ## [1.1.13] — 2026-05-31
 
