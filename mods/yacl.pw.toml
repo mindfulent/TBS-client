@@ -1,13 +1,13 @@
 name = "YetAnotherConfigLib (YACL)"
-filename = "yet_another_config_lib_v3-3.9.3+26.1-fabric.jar"
+filename = "yet_another_config_lib_v3-3.9.4+26.2-fabric.jar"
 side = "client"
 
 [download]
-url = "https://cdn.modrinth.com/data/1eAoo2KR/versions/hzww5Tor/yet_another_config_lib_v3-3.9.3%2B26.1-fabric.jar"
+url = "https://cdn.modrinth.com/data/1eAoo2KR/versions/Sq2GH95j/yet_another_config_lib_v3-3.9.4%2B26.2-fabric.jar"
 hash-format = "sha512"
-hash = "c725d81ef2b8f7f4b3c1c127e782572778a765581ce6105e2c4ce77e642b52b2c99b1587f18af192ad649538e4844dda6807e2ecda0a493d09f7f06a346ac377"
+hash = "a23640a6c17052a763fe238a426c17dc6ce316499963f4f85c7dae2e6b1e2d34f3225959d9776caa9537e5d6ea5a9c85d37568c6e26fdad081d4bdaa0167ef07"
 
 [update]
 [update.modrinth]
 mod-id = "1eAoo2KR"
-version = "hzww5Tor"
+version = "Sq2GH95j"
