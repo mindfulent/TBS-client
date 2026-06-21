@@ -2,11 +2,19 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "149811c66475f622b38a44d8628e236a848644008a089ec976cf6e24a0707c5b"
+hash = "3578f1b71cf00ca3603f9e75cf393b1a1f0d813e384fdb7921f96a37617207cd"
 
 [[files]]
 file = "README.md"
-hash = "5360f8e222022ef263ab30dc3a795dc4d2db8833ce6224b023ea6e19644ee229"
+hash = "0a28b49b1a1fd9e77ad6e1167d4b8156d47743e875770fdfc84089de239ce9a8"
+
+[[files]]
+file = "config/defaultoptions/extra/config/iris.properties"
+hash = "07091249923fe423ad7e5e597146bc15f426979d8a71890919f34b526309e529"
+
+[[files]]
+file = "config/defaultoptions/extra/config/xaero/minimap/profiles/default.cfg"
+hash = "ae3b01ab821b9bd116d9e4be57a86caa8bc7d12b92964a318bbcacad9902f3bf"
 
 [[files]]
 file = "config/defaultoptions/extra/config/xaerominimap.txt"
@@ -22,7 +30,7 @@ hash = "66edd74aee573daa17eeb1adac03d5b2789501e9284f369de801c2375521b3aa"
 
 [[files]]
 file = "config/defaultoptions/options.txt"
-hash = "00d60313d0e25923b91e054aa9db39a24c51da97848d25107e643956b8eed25e"
+hash = "730ccc518229ea518826fea90489b7de1a5c9c95a2ca65d744fb435338e0eea3"
 
 [[files]]
 file = "credits.txt"
@@ -30,7 +38,7 @@ hash = "16eefa6ced4793cca79c9e74ebd47eaf5b50a5b227156c42a2ef13c4837a8740"
 
 [[files]]
 file = "docs/MOD_LIST.md"
-hash = "a3fa673d13f7266eafacca2ea1cb83013ea017395b90e7ef45835a0d50c40a09"
+hash = "8345978c9c570d39209776b954d442c4377c60b00262c2cd04237c254f902831"
 
 [[files]]
 file = "docs/TBS-mod-strategy.md"
@@ -247,7 +255,7 @@ metafile = true
 
 [[files]]
 file = "mods/streamcraft-live.pw.toml"
-hash = "002c9249d63d0a04e2b277904c38b45e4400bd4e0d7a9b85d8911513482b7be5"
+hash = "857b8765da021c7f3d2eafec087b8ebf2f9702eb604635d500a3b17eb27b8420"
 metafile = true
 
 [[files]]

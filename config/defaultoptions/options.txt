@@ -1,2 +1,6 @@
 resourcePacks:["vanilla","fabric","file/VanillaTweaks.zip","file/FreshAnimations_v1.10.5.zip","file/FA+All_Extensions-v1.9.zip","file/FA+Emissive-v1.6.zip"]
 incompatibleResourcePacks:[]
+renderDistance:32
+simulationDistance:32
+guiScale:3
+soundCategory_ambient:0.2

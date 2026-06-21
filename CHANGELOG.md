@@ -2,6 +2,44 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.2.4] — 2026-06-21
+
+**Xaero's minimap hidden by default.** A cleaner first-launch HUD — the minimap no longer
+shows until a player wants it.
+
+- Seeded `display_minimap = false` via a full Xaero profile at
+  `config/defaultoptions/extra/config/xaero/minimap/profiles/default.cfg` (Default Options
+  copies it on first launch; a returning player's setting is never overwritten). This
+  replaces the stale `extra/config/xaerominimap.txt` seed, which the current Xaero build
+  (`25.3.14`) no longer reads — minimap config moved to `config/xaero/minimap/`.
+- **Press `K` to toggle the minimap back on** in-game (the existing Toggle Minimap keybind).
+- No mod or other setting changed.
+
+## [1.2.3] — 2026-06-21
+
+**StreamCraft Live 0.12.1 → 0.12.9, plus a batch of better out-of-the-box defaults.**
+Lockstep release with TBS-Server 1.2.3 — run the **same StreamCraft version on client and
+server**.
+
+- Repinned **StreamCraft Live → 0.12.9+mc26.1.2** (Modrinth `5rJQ8Dcv`), the alpha
+  published to CurseForge/Modrinth 2026-06-20. The 26.1.2 band was the only one given an
+  on-device pass this cycle, so it is the best-tested target.
+  - **Honest version-mismatch UI (0.12.2).** A client whose StreamCraft version doesn't
+    match the server's now sees a dedicated screen naming the actual cause and both
+    versions — instead of being falsely told the trial had expired.
+  - **Cross-device webcam/screen video restored (0.12.5–0.12.8).** The 26.1.2 band briefly
+    ran ahead on the LiveKit FFI 0.64 line (during the Android launcher build-out) which
+    regressed desktop video both ways; 0.12.8 reverted it to the stable 0.48 path bands A–H
+    ship, fixing Mac-publishes-zero-video and the dynacast receive blackout.
+- **New first-launch defaults** (seeded by Default Options; each is still freely changeable
+  and never overrides a returning player's choice):
+  - Render distance **32 chunks**, simulation distance **32 chunks**.
+  - GUI scale **3×**.
+  - **BSL Shaders v10.0 enabled by default** via a seeded `config/iris.properties`
+    (the pack already bundled `shaderpacks/BSL_v10.0.zip`).
+  - Ambient/Environment sound volume **20%**.
+- No mod added, removed, or changed beyond the StreamCraft bump.
+
 ## [1.2.1] — 2026-06-10
 
 **Bundled a curated Vanilla Tweaks resource pack + made the default resource-pack selection

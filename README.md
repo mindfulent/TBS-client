@@ -82,8 +82,17 @@ The Fresh Animations packs sit above both Vanilla Tweaks and Patrix so FA's enti
 take priority; the block-level texture packs apply underneath (FA and Vanilla Tweaks don't
 overlap — one is entities, the other is blocks). The on-by-default selection is applied on
 first launch by the **Default Options** mod (`config/defaultoptions/options.txt` →
-`resourcePacks`); a player's later changes are never overwritten on update. The shader is
-selected separately in the Iris menu, not the resource-pack list.
+`resourcePacks`); a player's later changes are never overwritten on update.
+
+The shader is selected separately in the Iris menu, not the resource-pack list — but as of
+1.2.3 **BSL Shaders v10.0** is pre-selected and enabled on first launch (the bundled
+`shaderpacks/BSL_v10.0.zip`, seeded via `config/defaultoptions/extra/config/iris.properties`).
+Turn it off in **Options → Video Settings → Shader Packs** for a lighter client; the choice
+sticks. Complementary Reimagined, Solas, and Photon are also bundled as alternatives.
+
+**Other first-launch defaults** (all seeded by Default Options, all freely changeable):
+render distance **32**, simulation distance **32**, GUI scale **3×**, Ambient/Environment
+sound volume **20%**, and **Xaero's minimap hidden** (press **`K`** to toggle it on).
 
 **Performance:** the full stack (shader + Patrix + Fresh Animations) targets roughly an
 RTX 3060 / 8 GB-VRAM-class machine at ~60 FPS / 1080p. On weaker hardware, drop

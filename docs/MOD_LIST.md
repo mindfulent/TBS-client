@@ -85,7 +85,7 @@ CurseForge project-ID URLs redirect to the canonical slug.
 
 | Mod | Side | Source | Filename |
 |---|---|---|---|
-| [StreamCraft Live](https://modrinth.com/mod/UUUunIAe) | both | Modrinth | `streamcraft-0.8.25+mc26.1.2.jar` |
+| [StreamCraft Live](https://modrinth.com/mod/UUUunIAe) | both | Modrinth | `streamcraft-0.12.9+mc26.1.2.jar` |
 | [Simple Voice Chat](https://modrinth.com/mod/9eGKb6K1) | both | Modrinth | `voicechat-fabric-2.6.17+26.1.2.jar` |
 
 Both are optional per player — a vanilla client without them still connects and
