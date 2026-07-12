@@ -2,6 +2,48 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.3.0] — 2026-07-12
+
+**StreamCraft Live 0.12.9 → 0.15.11, and a Modrinth-compliance restructure of how the
+pack is packaged.** Lockstep release with TBS-Server 1.3.0: run the same StreamCraft
+version on client and server. No mod was added or removed, and every mod stays at the
+exact same version (same jars) — the packaging changes below alter only where files
+are downloaded from.
+
+- Repinned **StreamCraft Live → 0.15.11+mc26.1.2** (Modrinth `dgzM9Maj`), covering the
+  0.13–0.15 line published 2026-07-11. Highlights for players:
+  - **Voice chat and solo streaming are now free, forever** (0.14.10). Multi-party
+    video (two or more people publishing at once) is what the paid tier covers.
+  - **Credit-based trial with in-game extension requests** (0.15.0): the trial is a
+    usage credit rather than a countdown, and can be extended from inside the mod.
+  - **Single-player support** (0.15.1): StreamCraft now also works in single-player
+    worlds, not only on servers.
+  - **Shorter, plainer consent and terms screens** (0.15.11, Terms of Service 1.3).
+  - All five per-OS pins updated in sync (Windows primary, Linux, Linux ARM64,
+    macOS arm64/x86_64), plus the CurseForge swap (CF file `8416519`). StreamCraft's
+    network protocol is unchanged (still 7), so 0.12.9 clients can still connect —
+    but matching the server's version is always recommended.
+- **Modrinth packaging restructure** — the pack was rejected by Modrinth review for
+  excessive overrides and for carrying per-OS variants as additional files; both are
+  fixed:
+  - **29 mods re-sourced from CurseForge to Modrinth** (matched by file hash, so the
+    installed jars are byte-identical). They now download as Modrinth URL references
+    instead of riding inside the pack as override jars. The CurseForge `.zip` build
+    still references CurseForge files for them via the `scripts/cf-sources/` swaps,
+    so mod authors keep earning CF rewards there.
+  - **BSL, Solas, and Photon shaders are now Modrinth references** instead of bundled
+    zips (same files, hash-matched). Solas now installs under its upstream filename
+    `Solas Shader V3.1c.zip`. BSL stays pre-selected on first launch.
+  - The only remaining content override is the curated `VanillaTweaks.zip` (not
+    distributed on Modrinth; generated at vanillatweaks.net and credited per their
+    terms in `credits.txt`).
+  - **Modrinth now hosts only the primary (Windows) `.mrpack`.** The per-OS variants
+    (Linux, Linux ARM64, macOS arm64/x86_64) ship via GitHub releases — Modrinth's
+    content rules (5.7) do not allow alternate variations as additional files on one
+    project. CurseForge distribution is unchanged.
+- Sourcing policy for this pack is now **Modrinth-first** (inverting the repo-wide
+  CurseForge-first rule); see `PUBLISHING.md` and `CLAUDE.md`.
+
 ## [1.2.4] — 2026-06-21
 
 **Xaero's minimap hidden by default.** A cleaner first-launch HUD — the minimap no longer

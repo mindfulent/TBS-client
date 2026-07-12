@@ -23,16 +23,26 @@ pip install -r scripts/requirements.txt        # requests + markdown
 cp .env.example .env                           # then fill in tokens
 
 python scripts/publish.py --platform both --variant all --dry-run    # export + print metadata
-python scripts/publish.py --platform modrinth                        # all 5 variants → one Modrinth version
-python scripts/publish.py --platform both                            # both stores, all variants
-python scripts/publish.py --platform modrinth --variant linux        # one variant (testing)
+python scripts/publish.py --platform modrinth                        # exports all variants, uploads Windows only
+python scripts/publish.py --platform both                            # both stores
 ```
 
 The version is read from `pack.toml`; the changelog is the matching `## [X.Y.Z]`
-section of `CHANGELOG.md`. Modrinth uploads are idempotent. **Modrinth** receives
-one version with all five `.mrpack` files attached (Windows primary). **CurseForge**
-receives the Windows zip as primary + four additional files linked via
-`parentFileID`, matching the StreamCraft convention.
+section of `CHANGELOG.md`. Modrinth uploads are idempotent.
+
+**Where each artifact goes** (changed after the 2026-06 Modrinth rejection):
+
+- **Modrinth** receives ONLY the primary Windows `.mrpack`. Modrinth Content
+  Rule 5.7 forbids uploading alternate variations of a project as additional
+  files — the pack was rejected ("Unsupported Project") for attaching all five
+  per-OS variants to one version. `publish.py` now refuses to upload variants
+  to Modrinth.
+- **GitHub releases** carry all five `.mrpack` variants — that is where
+  Mac/Linux players download from (linked from the Modrinth description and
+  README).
+- **CurseForge** receives the Windows zip as primary + four additional files
+  linked via `parentFileID`, matching the StreamCraft convention (additional
+  files are supported on CurseForge).
 
 ### Per-platform StreamCraft overlay
 
@@ -50,7 +60,9 @@ curl "https://api.modrinth.com/v2/version/<new-version-id>" | \
 
 ## Release checklist
 
-1. Add/update mods (CurseForge-first — see `CLAUDE.md`), `packwiz refresh`.
+1. Add/update mods (**Modrinth-first for this pack** — see the License
+   compliance section; CF-sourced mods become override jars and Modrinth
+   rejects the pack), `packwiz refresh`.
 2. Re-run the license check below if any mod was added.
 3. Bump `version` in `pack.toml`; add a `## [X.Y.Z]` entry to `CHANGELOG.md`.
 4. `python scripts/publish.py --platform modrinth --dry-run` — sanity-check.
@@ -106,17 +118,18 @@ needs no special server to be worth installing.
   swapping, first-person body, 3D skin layers, Not Enough Animations.
 - **HUD & quality-of-life** — JEI recipe search, WTHIT block tooltips,
   AppleSkin, BetterF3, Mod Menu, Controlling, Mouse Wheelie, and more.
-- **Multiplayer** — StreamCraft Live (in-world video) and Simple Voice Chat
-  (proximity voice), both optional per player and active only on servers that
-  support them.
+- **Multiplayer** — StreamCraft Live (in-world video, screen share, and voice),
+  optional per player and active only on servers that support it.
 
-## Optional visual layer
+## Visual layer
 
-A shader and PBR resource-pack set ship as **optional toggles** chosen at
-import — off by default for a light client, on for a fully dialed-in look:
+**BSL Shaders is on by default** for a dialed-in look out of the box (toggle
+off in the shader menu for maximum performance). Solas and Photon ship
+alongside as alternatives, plus optional toggles chosen at import:
 
-- Complementary Shaders – Reimagined
-- Patrix 32x — labPBR resource pack
+- BSL Shaders (default), Solas Shader, Photon Shader
+- Complementary Shaders – Reimagined (optional toggle)
+- Patrix 32x — labPBR resource pack (optional toggle)
 - Fresh Animations (+ Emissive, + Extensions)
 
 ## Vanilla-safe by design
@@ -130,9 +143,10 @@ vanilla 26.1.2 server with it.
 Import the `.mrpack` with **Prism Launcher** or the **Modrinth App**.
 
 > **macOS / Linux:** StreamCraft Live ships per-platform native libraries; this
-> pack references the Windows build. On macOS or Linux, swap the StreamCraft jar
-> for the matching variant from the
-> [StreamCraft Live](https://modrinth.com/mod/streamcraft-live) page.
+> pack references the Windows build. On macOS or Linux, download the matching
+> per-OS `.mrpack` from the pack's
+> [GitHub releases](https://github.com/slashdaemon/TBS-client/releases) instead
+> (Modrinth hosts only the Windows build).
 
 ## Credits
 
@@ -176,6 +190,17 @@ jars. Bundling is redistribution, so every bundled mod must permit it.
 **When adding a mod:** if it is CurseForge-sourced it will be bundled — confirm
 its license permits modpack redistribution, or re-source it from Modrinth so it
 becomes a URL reference instead.
+
+**Update — 2026-07-12, pack v1.3.0.** Modrinth rejected the pack for "Excessive
+Modpack Overrides" — 29 mods had drifted to CurseForge-canonical (against the
+design above) and were riding as override jars, and three shaderpacks were
+bundled as raw zips. All are now Modrinth-canonical URL references (same jars,
+matched by sha1). The only remaining content override is
+`resourcepacks/VanillaTweaks.zip` (not on Modrinth; generated at
+vanillatweaks.net and credited per their terms, which permit inclusion in
+modpacks with credit). **Keep it that way: every new mod is `mr install` first
+here** — add a `scripts/cf-sources/mods/` swap if it should ride as a CF
+reference in the CurseForge zip.
 
 ---
 

@@ -46,12 +46,21 @@ Mods with no 26.1.2 build yet are tracked under "Pending mods" in `README.md` an
 ## Commands
 
 ```bash
-./packwiz.exe cf install <slug> -y    # add a mod — CurseForge first (compliance)
-./packwiz.exe mr install <slug> -y    # Modrinth fallback ONLY when no CF 26.1.2 build
+./packwiz.exe mr install <slug> -y    # add a mod — MODRINTH FIRST in this pack (see below)
+./packwiz.exe cf install <slug> -y    # only when the mod genuinely isn't on Modrinth
 ./packwiz.exe update --all            # update every mod
 ./packwiz.exe refresh                 # rebuild index.toml hashes after ANY manual edit
-./packwiz.exe modrinth export         # produce TBS-Client-X.Y.Z.mrpack
+./packwiz.exe modrinth export         # produce TheBlockSurvival-X.Y.Z.mrpack
 ```
+
+**⚠️ This pack inverts the Projects-wide CurseForge-first rule.** The canonical
+pack must be **Modrinth-sourced**: `packwiz modrinth export` bundles every
+CF-sourced entry as an override jar, and Modrinth **rejected the pack** for
+excessive overrides (2026-06, fixed in v1.3.0). CurseForge compliance is handled
+separately — `scripts/publish.py` swaps in CF-sourced metafiles from
+`scripts/cf-sources/mods/` when building the CurseForge `.zip`. To keep a mod
+CF-referenced on CurseForge, add/refresh its swap file there (and mind the
+stale-swap guard). See `PUBLISHING.md`.
 
 `index.toml` tracks `README.md`, `CHANGELOG.md`, and `docs/` alongside the `.pw.toml`
 files — so editing any of those by hand requires a `refresh` afterward to fix the index
@@ -60,8 +69,9 @@ and `pack.toml` hashes. 26.1.2 is the Fabric 1.21.11 ecosystem; a mod tagged `26
 
 ## Adding or changing a mod — full checklist
 
-1. `./packwiz.exe cf install <slug> -y` (CurseForge first; Modrinth only if no 26.1.2 CF
-   build, and then mark the mod `(Modrinth)` in `CHANGELOG.md`).
+1. `./packwiz.exe mr install <slug> -y` (Modrinth first — see the sourcing warning
+   above; CurseForge only if the mod isn't on Modrinth, and then confirm its license
+   permits bundling since it will ride as an override jar).
 2. Verify the mod is client-side-only and the new `.pw.toml` has `side = "client"`.
 3. If switching a mod Modrinth↔CurseForge, delete the old `.pw.toml` first — packwiz
    writes a fresh file and the stale one will linger.

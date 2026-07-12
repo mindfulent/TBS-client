@@ -81,6 +81,11 @@ PACK_LOADERS = ["fabric"]
 # canonical pack already references the Windows StreamCraft jar; for the other
 # variants, publish.py overlays scripts/platform-sources/<variant>/ on top of
 # the pack at export time, then restores.
+#
+# Distribution split: Modrinth carries ONLY the primary (windows) .mrpack —
+# Modrinth Content Rule 5.7 forbids alternate variations as additional files
+# on one project. The per-OS variants ship via GitHub releases; CurseForge
+# keeps its primary+additional-files upload (allowed there).
 PLATFORM_VARIANTS = ["windows", "linux", "linux-aarch64", "macos-arm64", "macos-x86_64"]
 DEFAULT_VARIANT = "windows"  # canonical pack ≡ Windows; no swap needed for this one
 PLATFORM_SOURCES_DIR = "scripts/platform-sources"
@@ -398,17 +403,19 @@ def publish_modrinth(
     token: str,
     dry_run: bool,
 ) -> bool:
-    """Upload one Modrinth version with all platform-variant .mrpack files
-    attached. `mrpacks[0]` is marked primary. Returns True on a successful
-    upload."""
-    if not mrpacks:
-        raise ValueError("publish_modrinth: empty mrpacks list")
+    """Upload one Modrinth version carrying ONLY the primary (windows/default)
+    .mrpack. Modrinth Content Rule 5.7 forbids alternate variations of a project
+    as additional files (the pack was rejected for exactly this), so the per-OS
+    variant .mrpacks are never attached here — they are distributed via GitHub
+    releases instead. Returns True on a successful upload."""
+    if len(mrpacks) != 1:
+        raise ValueError(
+            "publish_modrinth: expected exactly the primary .mrpack — per-OS "
+            "variants must not be uploaded to Modrinth (Content Rule 5.7)")
     primary = mrpacks[0]
     print(f"\n=== Modrinth: {project} v{version} ===")
     print(f"  game_versions: {game_versions}  loaders: {PACK_LOADERS}  type: {version_type}")
-    print(f"  files: {len(mrpacks)} (primary: {primary.name})")
-    for p in mrpacks[1:]:
-        print(f"         {p.name}")
+    print(f"  file: {primary.name}")
 
     metadata = {
         "name": f"v{version}",
@@ -419,7 +426,7 @@ def publish_modrinth(
         "version_type": version_type,
         "loaders": PACK_LOADERS,
         "featured": False,
-        "file_parts": [p.name for p in mrpacks],
+        "file_parts": [primary.name],
         "primary_file": primary.name,
     }
 
@@ -435,48 +442,20 @@ def publish_modrinth(
         print(f"  SKIP — version {version} already published (id={existing})")
         return False
 
-    total_mb = sum(p.stat().st_size for p in mrpacks) / 1_000_000
     primary_mb = primary.stat().st_size / 1_000_000
-    print(f"  POST {MODRINTH_API}/version  (primary only: {primary_mb:.2f} MB; "
-          f"+{len(mrpacks) - 1} additional files staged separately, "
-          f"{total_mb:.2f} MB total) ...")
-    # Staged upload: a single multipart POST with all 5 .mrpacks exceeds Cloudflare's
-    # ~100 MB API-gateway cap (HTTP 413). Modrinth's create-version endpoint accepts
-    # one file at a time fine, so we POST /version with just the primary, then add
-    # each additional file via POST /version/{id}/file. Same end state — one Modrinth
-    # version with N files attached, primary first.
-    primary_metadata = dict(metadata)
-    primary_metadata["file_parts"] = [primary.name]
+    print(f"  POST {MODRINTH_API}/version  ({primary_mb:.2f} MB) ...")
     with primary.open("rb") as fh:
         files = [
-            ("data", (None, json.dumps(primary_metadata), "application/json")),
+            ("data", (None, json.dumps(metadata), "application/json")),
             (primary.name, (primary.name, fh, "application/x-modrinth-modpack+zip")),
         ]
         r = requests.post(f"{MODRINTH_API}/version",
                           headers={"Authorization": token, "User-Agent": USER_AGENT},
                           files=files, timeout=600)
     if r.status_code >= 400:
-        raise RuntimeError(f"Modrinth (primary) {r.status_code}: {r.text}")
-    data = r.json()
-    version_id = data["id"]
-    print(f"  OK primary uploaded id={version_id} ({primary.name})")
-
-    for extra in mrpacks[1:]:
-        size_mb = extra.stat().st_size / 1_000_000
-        print(f"  POST {MODRINTH_API}/version/{version_id}/file  ({size_mb:.2f} MB, {extra.name}) ...")
-        extra_meta = {"file_parts": [extra.name]}
-        with extra.open("rb") as fh:
-            files = [
-                ("data", (None, json.dumps(extra_meta), "application/json")),
-                (extra.name, (extra.name, fh, "application/x-modrinth-modpack+zip")),
-            ]
-            r = requests.post(f"{MODRINTH_API}/version/{version_id}/file",
-                              headers={"Authorization": token, "User-Agent": USER_AGENT},
-                              files=files, timeout=600)
-        if r.status_code >= 400:
-            raise RuntimeError(f"Modrinth (additional {extra.name}) {r.status_code}: {r.text}")
-        print(f"    OK additional uploaded ({extra.name})")
-    print(f"  OK id={version_id}  files={len(mrpacks)}  "
+        raise RuntimeError(f"Modrinth {r.status_code}: {r.text}")
+    version_id = r.json()["id"]
+    print(f"  OK id={version_id}  ({primary.name})  "
           f"https://modrinth.com/modpack/{project}/version/{version}")
     return True
 
@@ -629,8 +608,10 @@ def main() -> int:
                    default="both", help="Where to publish (default: both)")
     p.add_argument("--variant", default="all",
                    help=f"Platform variant(s) to build: {'/'.join(PLATFORM_VARIANTS)} or "
-                        f"'all' (default — builds every variant and uploads them as one "
-                        f"multi-file Modrinth version / CurseForge primary+additionals).")
+                        f"'all' (default). All variants are exported to dist/, but only "
+                        f"the primary ({DEFAULT_VARIANT}) .mrpack is uploaded to Modrinth "
+                        f"(Content Rule 5.7); per-OS variants ship via GitHub releases. "
+                        f"CurseForge uploads primary+additionals.")
     p.add_argument("--type", default="release", choices=["release", "beta", "alpha"],
                    help="Release channel (default: release)")
     p.add_argument("--modrinth-project", help="Modrinth slug or ID "
@@ -710,11 +691,19 @@ def main() -> int:
 
     failures = 0
 
-    # ---- Modrinth (one version, all variants attached) --------------------
+    # ---- Modrinth (primary variant ONLY — Content Rule 5.7) ----------------
+    # The per-OS variant .mrpacks are still exported above, but they ship via
+    # GitHub releases; attaching them to a Modrinth version got the pack
+    # rejected as an "Unsupported Project" (multiple variations as files).
     if do_modrinth:
-        for p in mrpacks:
-            if not p.exists():
-                raise SystemExit(f"ERR: {p} not found (run without --no-export)")
+        if DEFAULT_VARIANT not in variants:
+            print(f"ERR: Modrinth publishing requires the '{DEFAULT_VARIANT}' (primary) "
+                  f"variant; got --variant {args.variant!r}. Per-OS variants are "
+                  f"GitHub-release-only.")
+            return 1
+        primary_mrpack = dist / f"TheBlockSurvival-{version}.mrpack"
+        if not primary_mrpack.exists():
+            raise SystemExit(f"ERR: {primary_mrpack} not found (run without --no-export)")
         token = os.environ.get("MODRINTH_TOKEN", "")
         if not token and not args.dry_run:
             print("ERR: MODRINTH_TOKEN not set (.env or env var)")
@@ -722,7 +711,7 @@ def main() -> int:
         project = (args.modrinth_project or os.environ.get("MODRINTH_PROJECT")
                    or DEFAULT_MODRINTH_PROJECT)
         try:
-            publish_modrinth(mrpacks, project, version, game_versions,
+            publish_modrinth([primary_mrpack], project, version, game_versions,
                              args.type, changelog_md, token, args.dry_run)
         except Exception as e:
             print(f"  FAILED: {e}")

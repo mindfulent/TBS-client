@@ -3,11 +3,11 @@ filename = "Searchables-fabric-26.1.2-1.0.1.jar"
 side = "client"
 
 [download]
-hash-format = "sha1"
-hash = "be53009b76b1d064eb532a9a9b62dda775f84e76"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/fuuu3xnx/versions/VtvLNkTP/Searchables-fabric-26.1.2-1.0.1.jar"
+hash-format = "sha512"
+hash = "bda601fdd746971af54354ed9296c48c9e0eeaf94d111657caae607374e16f12fcbc0e87e7b1580edfedcbb8bf93f2626fb31f83ae85400146e3b1422ccd8956"
 
 [update]
-[update.curseforge]
-file-id = 7911700
-project-id = 858542
+[update.modrinth]
+mod-id = "fuuu3xnx"
+version = "VtvLNkTP"

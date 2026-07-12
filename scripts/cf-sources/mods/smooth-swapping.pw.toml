@@ -1,0 +1,13 @@
+name = "Smooth Swapping"
+filename = "smoothswapping-0.9.9-26.1-fabric.jar"
+side = "client"
+
+[download]
+hash-format = "sha1"
+hash = "12539817fa07ac5ed27ecd0293d594fe6efc31f0"
+mode = "metadata:curseforge"
+
+[update]
+[update.curseforge]
+file-id = 7828330
+project-id = 513689

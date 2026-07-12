@@ -85,10 +85,12 @@ first launch by the **Default Options** mod (`config/defaultoptions/options.txt`
 `resourcePacks`); a player's later changes are never overwritten on update.
 
 The shader is selected separately in the Iris menu, not the resource-pack list — but as of
-1.2.3 **BSL Shaders v10.0** is pre-selected and enabled on first launch (the bundled
-`shaderpacks/BSL_v10.0.zip`, seeded via `config/defaultoptions/extra/config/iris.properties`).
-Turn it off in **Options → Video Settings → Shader Packs** for a lighter client; the choice
-sticks. Complementary Reimagined, Solas, and Photon are also bundled as alternatives.
+1.2.3 **BSL Shaders v10.0** is pre-selected and enabled on first launch (seeded via
+`config/defaultoptions/extra/config/iris.properties`). Turn it off in **Options → Video
+Settings → Shader Packs** for a lighter client; the choice sticks. Complementary
+Reimagined, Solas, and Photon also ship as alternatives. As of 1.3.0 all four shaders are
+Modrinth-referenced pack entries (no bundled zips) — Solas installs as
+`Solas Shader V3.1c.zip`, its upstream filename.
 
 **Other first-launch defaults** (all seeded by Default Options, all freely changeable):
 render distance **32**, simulation distance **32**, GUI scale **3×**, Ambient/Environment
@@ -115,6 +117,6 @@ setting inside Voxy's own config, enabled in-game.
 
 ## Version coupling
 
-TBS-Client and TBS-Server versions are **decoupled** — the mod whose version must match
-across both packs is **StreamCraft Live**. Coordinate bumps of it as a synchronized
-release of both packs.
+TBS-Client and TBS-Server ship in **lockstep** (since v1.1.7) — every bump to either pack
+is a synchronized bump of both, same version number. The mod whose jar version must match
+across both packs is **StreamCraft Live**.

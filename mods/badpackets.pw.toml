@@ -3,11 +3,11 @@ filename = "badpackets-fabric-0.12.2.jar"
 side = "client"
 
 [download]
-hash-format = "sha1"
-hash = "6733365cd9e0a44f6bb28326385b96e2328b31f2"
-mode = "metadata:curseforge"
+url = "https://cdn.modrinth.com/data/ftdbN0KK/versions/SgNrUT3E/badpackets-fabric-0.12.2.jar"
+hash-format = "sha512"
+hash = "91ba4b89e2730d1c31ed6eea35605706908441b6097d4e6b7388cfff9d4a0bc8ae99db98926142a376adff6f0c7910b67c014cf90b9859a7754a2a2dc78c5384"
 
 [update]
-[update.curseforge]
-file-id = 7878543
-project-id = 615134
+[update.modrinth]
+mod-id = "ftdbN0KK"
+version = "SgNrUT3E"

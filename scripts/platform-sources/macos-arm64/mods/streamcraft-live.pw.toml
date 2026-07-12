@@ -1,13 +1,13 @@
 name = "StreamCraft Live"
-filename = "streamcraft-0.12.9+mc26.1.2-macos-arm64.jar"
+filename = "streamcraft-0.15.11+mc26.1.2-macos-arm64.jar"
 side = "both"
 
 [download]
-url = "https://cdn.modrinth.com/data/UUUunIAe/versions/5rJQ8Dcv/streamcraft-0.12.9%2Bmc26.1.2-macos-arm64.jar"
+url = "https://cdn.modrinth.com/data/UUUunIAe/versions/dgzM9Maj/streamcraft-0.15.11%2Bmc26.1.2-macos-arm64.jar"
 hash-format = "sha512"
-hash = "4c75574046f1927b827207f6ee98b9f11b25d07c39ef8f0afa0d94f1b5a8602b89f7319398c89fa8ca019689117271e296786b75e22533e327010aca36569765"
+hash = "59c2d936cee3de5965ccb95fbc5ebe6ecb8c5d535d6c108e4f6746cc093855c4a821d676deb575ecc2ebfffebf700a1d589a38f3ecf462a06b40c4d6553d9169"
 
 [update]
 [update.modrinth]
 mod-id = "UUUunIAe"
-version = "5rJQ8Dcv"
+version = "dgzM9Maj"
