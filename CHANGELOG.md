@@ -2,6 +2,26 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.3.1] — 2026-07-12
+
+**Shader pack fix: all four shaders now actually support MC 26.1.2.** Three of the four
+shader pack pins predated Minecraft 26.1 entirely (they were carried over from the 1.21.x
+era) and misrendered or hid modded geometry — most visibly, StreamCraft Live display
+screens went invisible with Photon or Solas enabled.
+
+- **Photon** `v1.2a` → `v1.3b` (26.1 support arrived in v1.3)
+- **Solas Shader** `V3.1c` → `3.7` (26.1.2 support arrived in 3.6; installs as
+  `Solas Shader V3.7.zip`)
+- **BSL Shaders** `v10.0` → `v10.1.3` (26.1.2 support arrived in 10.1.2). The
+  first-launch default shader seed (`config/defaultoptions/extra/config/iris.properties`)
+  now points at `BSL_v10.1.3.zip`. Players who already launched once keep their own
+  shader selection; if that selection is the old `BSL_v10.0.zip` it no longer exists
+  after updating, and Iris falls back to shaders off — re-pick a pack in
+  **Options → Video Settings → Shader Packs**.
+- **Complementary Reimagined** stays at `r5.8` (already 26.1.2-compatible).
+
+No mod changes.
+
 ## [1.3.0] — 2026-07-12
 
 **StreamCraft Live 0.12.9 → 0.15.11, and a Modrinth-compliance restructure of how the

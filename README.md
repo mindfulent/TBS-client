@@ -85,12 +85,14 @@ first launch by the **Default Options** mod (`config/defaultoptions/options.txt`
 `resourcePacks`); a player's later changes are never overwritten on update.
 
 The shader is selected separately in the Iris menu, not the resource-pack list — but as of
-1.2.3 **BSL Shaders v10.0** is pre-selected and enabled on first launch (seeded via
+1.2.3 **BSL Shaders v10.1.3** is pre-selected and enabled on first launch (seeded via
 `config/defaultoptions/extra/config/iris.properties`). Turn it off in **Options → Video
 Settings → Shader Packs** for a lighter client; the choice sticks. Complementary
 Reimagined, Solas, and Photon also ship as alternatives. As of 1.3.0 all four shaders are
 Modrinth-referenced pack entries (no bundled zips) — Solas installs as
-`Solas Shader V3.1c.zip`, its upstream filename.
+`Solas Shader V3.7.zip`, its upstream filename. As of 1.3.1 all four packs are pinned to
+builds that list MC 26.1.2 support (BSL 10.1.3, Photon v1.3b, Solas 3.7, Complementary
+r5.8 — the 1.3.0 pins for the first three predated 26.1 support and broke under 26.1.2).
 
 **Other first-launch defaults** (all seeded by Default Options, all freely changeable):
 render distance **32**, simulation distance **32**, GUI scale **3×**, Ambient/Environment

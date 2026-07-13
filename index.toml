@@ -2,15 +2,15 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "f72e725802bbac6624f9ea8e6ed2c781faa12527a834bc40cdd850b6a2bd0283"
+hash = "18d4b944b49a81f866bb4b283c196024b85e2c92a97e3db9170eb3abe4e05deb"
 
 [[files]]
 file = "README.md"
-hash = "ff9a0ad3500e8bdd6fd1545d47d9302300d0a929229270d86b0a3088f0a0bb41"
+hash = "bbdcd599fe672a9167446c13f16f881cd9e90f0db456b451961ac560f82bb061"
 
 [[files]]
 file = "config/defaultoptions/extra/config/iris.properties"
-hash = "07091249923fe423ad7e5e597146bc15f426979d8a71890919f34b526309e529"
+hash = "5d7432d48978468fdeef0938e4ef5662efbaae91132072831afab98887d8e3d3"
 
 [[files]]
 file = "config/defaultoptions/extra/config/xaero/minimap/profiles/default.cfg"
@@ -329,7 +329,7 @@ metafile = true
 
 [[files]]
 file = "shaderpacks/bsl-shaders.pw.toml"
-hash = "d30923bf5cfb4988a372508cb461d8077609d79a38d0b170785804c7ad15f16e"
+hash = "f91c2ec79366b4607d93928a07c223cbaa4a2e18fe0c110e68a3fc064e69b65a"
 metafile = true
 
 [[files]]
@@ -339,10 +339,10 @@ metafile = true
 
 [[files]]
 file = "shaderpacks/photon-shader.pw.toml"
-hash = "d5809ce5cd14f51e76072de693535d3b6db94440d058f0e7ba0a972f4c9335ba"
+hash = "8fcf53499d82780ab4434dc5323be4e7f8e12a51115f3238297597418ffee48d"
 metafile = true
 
 [[files]]
 file = "shaderpacks/solas-shader.pw.toml"
-hash = "aed8da05c8e4d9c7b68e82e8d9432b88769f7c4eeb8bd735845a189ef0e2bbf9"
+hash = "43c4f5e052b72a8ceaf9d8e5d1000760464d4f0e9d630827140ec4dcb21832e6"
 metafile = true
