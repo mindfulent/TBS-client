@@ -232,12 +232,38 @@ build, `publish.py` applies two per-platform transformations at export time
    their `.pw.toml` temporarily replaced with a CurseForge-sourced equivalent so
    the CF manifest carries a proper project reference (instead of a bundled
    override). The CF metafiles live in **`scripts/cf-sources/`**, mirroring the
-   pack's directory layout. There are currently 18 swap entries (17 mods +
-   Patrix 32x).
+   pack's directory layout. There are currently 23 swap entries (19 mods,
+   Patrix 32x, and the BSL / Photon / Solas shaderpacks).
 
-After both transforms the CF zip ends up with ~45 manifest references + ~3
-legally-bundleable overrides (Apache/MIT/LGPL/GPL/tr7zw-Protective mods that
-couldn't be cleanly `cf install`'d).
+After both transforms the Windows CF zip ends up with 50 manifest references and
+**one** content override: `resourcepacks/VanillaTweaks.zip` (not a CurseForge
+project — generated at vanillatweaks.net, credited in `credits.txt`). The rest of
+`overrides/` is pack config and docs, which is what overrides are for.
+
+**CurseForge rejection, 2026-07-25 (v1.4.0):** "The following files belong to
+CurseForge-hosted projects, and should therefore not be added directly to zip
+files" — `zoomify-2.16.0+26.1.jar` and `blur-fabric-6.2.0+26.1.jar`. Both had no
+cf-source swap, so they rode as override jars. Fixed by adding swaps for both
+(CF slug for Blur+ is **`blur-fabric`**, not `blur-plus`; CF ships 6.3.0 where
+Modrinth pins 6.2.0, so this one entry drifts a patch release between builds) and,
+pre-emptively, for the three bundled shaderpacks (BSL, Photon, Solas — CF has the
+exact same filenames). **The rule is generic: anything in `overrides/` that is a
+CurseForge-hosted project will be rejected**, so audit the exported zip before
+every CF upload:
+
+```bash
+python -c "import zipfile;z=zipfile.ZipFile('dist/TheBlockSurvival-<ver>.zip');\
+print([n for n in z.namelist() if n.startswith('overrides/') and n.lower().endswith(('.jar','.zip'))])"
+```
+
+**Unsolvable case — the per-OS variant zips.** The four non-Windows CF files each
+carry `mods/streamcraft-<ver>-<os>.jar` as an override. StreamCraft Live *is* a
+CurseForge project (1451729), but the per-OS jars are **additional files** hanging
+off the primary version, and CurseForge's public file list exposes only the primary
+per (MC, loader) pair — there is no referenceable project/file pair for them. So
+either the variants ship that one override (we are its author, so redistribution
+permission is not in question) or CurseForge carries the Windows zip only, with
+Mac/Linux players sent to GitHub releases exactly as on Modrinth.
 
 ### Maintaining `scripts/cf-sources/` when mods update
 
