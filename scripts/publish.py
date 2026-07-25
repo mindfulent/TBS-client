@@ -53,6 +53,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 
 try:
@@ -517,22 +518,37 @@ def publish_curseforge(
     changelog_type: str,
     token: str,
     dry_run: bool,
+    parent_file_id: int | None = None,
 ) -> bool:
     """Upload `zips[0]` as the primary CurseForge file; upload each subsequent
     entry as an additional file with `parentFileID` set to the primary's file
     id — matching StreamCraft's per-platform CurseForge convention. CurseForge
     rejects gameVersions on additional files (children inherit from parent),
-    so only the primary carries the versions list."""
+    so only the primary carries the versions list.
+
+    Recovery: pass `parent_file_id` (the file id of an already-uploaded primary)
+    and EVERY zip in `zips` is uploaded as an additional file against it — the
+    primary is not re-uploaded. CurseForge's upload endpoint intermittently 500s
+    or returns 1012 (file locked) partway through a multi-file release; rerun
+    with --parent-file-id <primary id> --variant <the ones that failed> instead
+    of republishing the whole version."""
     if not zips:
         raise ValueError("publish_curseforge: empty zips list")
+    recovery = parent_file_id is not None
     primary = zips[0]
     print(f"\n=== CurseForge: project {project_id} v{version} ===")
-    print(f"  files: {len(zips)} (primary: {primary.name})")
-    for p in zips[1:]:
-        print(f"         {p.name}")
+    if recovery:
+        print(f"  RECOVERY — attaching {len(zips)} additional file(s) to "
+              f"existing primary fileID={parent_file_id}")
+        for p in zips:
+            print(f"         {p.name}")
+    else:
+        print(f"  files: {len(zips)} (primary: {primary.name})")
+        for p in zips[1:]:
+            print(f"         {p.name}")
 
     catalog, type_ids, game_version_ids = {}, {}, []
-    if token:
+    if token and not recovery:
         try:
             catalog, type_ids = cf_fetch_catalog(token)
             game_version_ids = cf_resolve_game_versions(catalog, type_ids, game_version_names)
@@ -551,6 +567,11 @@ def publish_curseforge(
     }
 
     if dry_run:
+        if recovery:
+            for p in zips:
+                print(f"  DRY-RUN — would POST additional ({p.name}) to "
+                      f"parentFileID={parent_file_id}")
+            return False
         print(f"  DRY-RUN — would POST primary:\n{json.dumps(primary_meta, indent=2)}")
         for p in zips[1:]:
             extra_preview = {
@@ -562,7 +583,7 @@ def publish_curseforge(
                   f"{json.dumps(extra_preview, indent=2)}")
         return False
 
-    if not game_version_ids:
+    if not game_version_ids and not recovery:
         raise SystemExit("ERR: CurseForge upload needs at least one resolved gameVersion id")
 
     url = f"{CURSEFORGE_API}/projects/{project_id}/upload-file"
@@ -584,9 +605,14 @@ def publish_curseforge(
             raise RuntimeError(f"CurseForge returned no file id: {r.json()}")
         return fid
 
-    primary_id = _upload(primary, primary_meta)
-    print(f"    OK primary fileID={primary_id}")
-    for p in zips[1:]:
+    if recovery:
+        primary_id = parent_file_id
+        pending = list(zips)
+    else:
+        primary_id = _upload(primary, primary_meta)
+        print(f"    OK primary fileID={primary_id}")
+        pending = zips[1:]
+    for p in pending:
         extra_meta = {
             "changelog": changelog,
             "changelogType": changelog_type,
@@ -594,7 +620,19 @@ def publish_curseforge(
             "releaseType": release_type,
             "parentFileID": primary_id,
         }
-        extra_id = _upload(p, extra_meta)
+        # CurseForge briefly locks a version while it ingests the previous
+        # file; the next additional then comes back 500 or 1012 even though
+        # the request was well-formed. Retry with backoff before giving up.
+        for attempt in range(1, 4):
+            try:
+                extra_id = _upload(p, extra_meta)
+                break
+            except RuntimeError as e:
+                if attempt == 3:
+                    raise
+                wait = 20 * attempt
+                print(f"    retry {attempt}/2 in {wait}s after: {e}")
+                time.sleep(wait)
         print(f"    OK additional fileID={extra_id}")
     return True
 
@@ -616,6 +654,11 @@ def main() -> int:
                    help="Release channel (default: release)")
     p.add_argument("--modrinth-project", help="Modrinth slug or ID "
                    "(default: $MODRINTH_PROJECT or 'theblocksurvival')")
+    p.add_argument("--cf-parent-file-id", type=int,
+                   help="Recovery: attach the selected --variant zip(s) to this "
+                        "already-uploaded primary CurseForge file id instead of "
+                        "uploading a new primary. Use after a partial CurseForge "
+                        "failure (500 / 1012 file-locked) to finish the release.")
     p.add_argument("--cf-project-id", type=int,
                    help="CurseForge numeric project ID (default: $CURSEFORGE_PROJECT_ID)")
     p.add_argument("--game-versions", help="Comma-separated MC versions to advertise "
@@ -662,8 +705,10 @@ def main() -> int:
     # Determine variants to build.
     if args.variant == "all":
         variants = list(PLATFORM_VARIANTS)
-    elif args.variant in PLATFORM_VARIANTS:
-        variants = [args.variant]
+    elif all(v.strip() in PLATFORM_VARIANTS for v in args.variant.split(",")):
+        # Comma-separated list so a partial CurseForge failure can be finished
+        # with exactly the variants that didn't land (see --cf-parent-file-id).
+        variants = [v.strip() for v in args.variant.split(",")]
     else:
         print(f"ERR: unknown --variant {args.variant!r}; valid: {PLATFORM_VARIANTS} or 'all'")
         return 1
@@ -739,7 +784,8 @@ def main() -> int:
         changelog_cf, changelog_type = render_changelog(cf_changelog_md, args.changelog_format)
         try:
             publish_curseforge(cf_zips, cf_pid, version, [*game_versions, "Fabric"],
-                               args.type, changelog_cf, changelog_type, token, args.dry_run)
+                               args.type, changelog_cf, changelog_type, token, args.dry_run,
+                               parent_file_id=args.cf_parent_file_id)
         except Exception as e:
             print(f"  FAILED: {e}")
             failures += 1
