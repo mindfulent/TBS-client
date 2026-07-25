@@ -2,6 +2,39 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.4.0] — 2026-07-25
+
+**StreamCraft Live 0.15.11 → 0.17.4.** Lockstep release with TBS-Server 1.4.0 — run the
+same StreamCraft version on client and server. No mod added or removed; every other mod
+stays at the exact same version.
+
+- Repinned **StreamCraft Live → 0.17.4+mc26.1.2** (Modrinth `OvOKFjHA`), rolling up the
+  0.16–0.17 line published 2026-07-19/20. Highlights for players:
+  - **Shader pack support is certified** — StreamCraft screens render correctly under
+    BSL, Complementary Reimagined, Photon, and Solas. This pack's shader pins (updated
+    in 1.3.1) are all at or above the builds StreamCraft certifies. Screens are somewhat
+    dimmer under Solas at night or indoors.
+  - **Block Glow** (new, free, off by default) — a Display Block can cast a soft colored
+    glow onto the surrounding wall, tinted live by the video. Cycle
+    **Glow: OFF / Low / Medium / High** in the display's config screen. It needs both
+    sides on this build to sync the per-block setting, which this lockstep release gives.
+  - **Essential support is official** — inviting a friend into your single-player world
+    turns multi-party video on automatically, and an owned license is now recognized
+    instead of falling back to multi-party-off.
+  - **Streams only broadcast when someone is watching** — your own view and your own
+    Display Blocks light up instantly (always free and local), and the upload starts only
+    once another player is in range. Solo streaming no longer spends trial minutes.
+  - **Virtual cameras work on Windows** — NVIDIA Broadcast, OBS Virtual Camera, and Snap
+    Camera now appear in the device picker via a DirectShow backend.
+  - **Better YouTube restream audio**, plus fixes for green/garbled remote screen shares,
+    self-view letterbox cropping on Mac, and a second source turned on mid-stream not
+    reaching other players.
+- All five per-OS pins updated in sync (Windows primary, Linux, Linux ARM64, macOS
+  arm64/x86_64) plus the CurseForge swap (CF file `8469364`).
+- **No wire-protocol change** since 0.15.11 (still `7`), so a client on the older build
+  still connects — but matching the server's version is recommended, and Block Glow needs
+  both sides updated.
+
 ## [1.3.1] — 2026-07-12
 
 **Shader pack fix: all four shaders now actually support MC 26.1.2.** Three of the four
