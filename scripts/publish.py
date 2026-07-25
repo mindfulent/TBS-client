@@ -146,7 +146,17 @@ CURSEFORGE_EXCLUSION_NOTE = (
     "CurseForge for the default, or just rebind the key yourself in Controls.\n"
     "- **Xaero's Minimap** + **Xaero's World Map** — ARR license; install both from "
     "CurseForge (one click in the CF app). They power the Open Parties and Claims "
-    "map overlay. The Modrinth build bundles them."
+    "map overlay. The Modrinth build bundles them.\n\n"
+    "### About the macOS / Linux downloads\n"
+    "The Windows file is the primary download and references every mod through "
+    "`manifest.json`. The macOS and Linux companion files are identical except for "
+    "one bundled jar: **StreamCraft Live**, our own mod, ships per-OS native "
+    "libraries, and its per-OS builds exist on CurseForge only as additional files "
+    "attached to the primary version — there is no project/file pair a manifest can "
+    "point at. So each companion file carries the matching StreamCraft build "
+    "directly. Nothing else is bundled apart from the customized **VanillaTweaks** "
+    "resource pack, which is generated at vanillatweaks.net (not distributed on "
+    "CurseForge) and credited in `credits.txt`."
 )
 
 

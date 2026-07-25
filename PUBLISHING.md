@@ -265,6 +265,13 @@ either the variants ship that one override (we are its author, so redistribution
 permission is not in question) or CurseForge carries the Windows zip only, with
 Mac/Linux players sent to GitHub releases exactly as on Modrinth.
 
+**Decision (2026-07-25): keep all five files and explain the override.** The CF
+release changelog now carries an "About the macOS / Linux downloads" section
+(`CURSEFORGE_EXCLUSION_NOTE` in `scripts/publish.py`) stating why that one jar is
+bundled, so every future upload explains itself to the reviewer without a separate
+message. If a reviewer rejects it anyway, the fallback is Windows-only on
+CurseForge.
+
 ### Maintaining `scripts/cf-sources/` when mods update
 
 If you update or add a mod and want it referenced (not bundled) on CurseForge:
