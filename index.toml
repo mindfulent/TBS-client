@@ -2,7 +2,7 @@ hash-format = "sha256"
 
 [[files]]
 file = "CHANGELOG.md"
-hash = "0f79262feaf2e9d5f3c9d936370c1031f44bd7545bc0fb199d56419e3bf6c0ed"
+hash = "a53d7cc7311b16df35e3ccefcbcc58858e4ae8a1f9a9fcf1c8a028e9697fdac5"
 
 [[files]]
 file = "README.md"
@@ -145,7 +145,7 @@ metafile = true
 
 [[files]]
 file = "mods/fabric-api.pw.toml"
-hash = "2a77dc7aade5de6d21315582c4b70db40ff2bdf746b61c10d7ad3c5be8422f75"
+hash = "eebee020bae965b9f4da39a763188ec8bbbc0e34fa50c9891f921b0a14e53f7e"
 metafile = true
 
 [[files]]
@@ -295,7 +295,7 @@ metafile = true
 
 [[files]]
 file = "mods/yacl.pw.toml"
-hash = "25fd513915015dc25401178a859aa637ff490f9bfc1f4ba20e332ac8183aa168"
+hash = "b323a3d8679d35246d123375fc1f6bf873928afd4dc39ad74e86d4c87b72590c"
 metafile = true
 
 [[files]]

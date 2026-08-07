@@ -2,6 +2,28 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.4.1] — 2026-08-06
+
+**Fixes a keybind clash that made the StreamCraft menu unreachable on CurseForge
+installs.** No mod added, removed, or updated. Modrinth and Prism installs were never
+affected, so this release only changes what the CurseForge package ships.
+
+- **The `'` key opens StreamCraft again.** Open Parties and Claims binds its menu to `'`
+  by default, the same key StreamCraft uses, so whichever one Minecraft resolved first
+  won and the other was dead. The OPAC menu now defaults to `;` instead. Both are still
+  rebindable under Controls.
+  - Why only CurseForge saw it: the pack already moved OPAC to `;` through **Default
+    Options**, but that mod is All Rights Reserved and cannot be redistributed inside a
+    CurseForge package, so the setting never reached CurseForge players.
+- **CurseForge installs now get the pack's intended defaults**, which previously also
+  arrived only via Default Options: render distance 32, simulation distance 32, GUI
+  scale 3, and ambient sounds at 20%.
+
+Both are delivered through a plain `options.txt`, which Minecraft reads on its own with
+no extra mod involved. If you have already customised your controls or video settings in
+an existing profile, reinstalling or updating the pack will apply these defaults over
+them.
+
 ## [1.4.0] — 2026-07-25
 
 **StreamCraft Live 0.15.11 → 0.17.4.** Lockstep release with TBS-Server 1.4.0 — run the
