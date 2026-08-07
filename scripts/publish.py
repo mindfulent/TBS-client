@@ -268,7 +268,9 @@ def render_changelog(markdown_text: str, fmt: str) -> tuple[str, str]:
 # --------------------------------------------------------------------------
 
 def packwiz_export(pack_dir: Path, packwiz_exe: Path, platform: str, out_path: Path,
-                   variant: str = DEFAULT_VARIANT) -> None:
+                   variant: str = DEFAULT_VARIANT,
+                   bundle_sc_dir: Path | None = None,
+                   bundle_sc_version: str | None = None) -> None:
     """Run `packwiz refresh` then `packwiz <platform> export` into out_path.
 
     Two per-platform transformations are applied to the pack in-place before
@@ -285,10 +287,16 @@ def packwiz_export(pack_dir: Path, packwiz_exe: Path, platform: str, out_path: P
       StreamCraft Live .pw.toml so each platform's .mrpack / .zip points at
       the matching StreamCraft jar. Layered on top of the CurseForge swap so
       the per-OS StreamCraft wins over the Windows CF reference for
-      non-Windows CF builds."""
+      non-Windows CF builds.
+    - **StreamCraft bundle** (when bundle_sc_dir is set): drops the
+      streamcraft-live pin entirely and ships the matching per-OS jar as a
+      bundled override instead. For prereleases of an unreleased StreamCraft
+      build, which by definition has no Modrinth/CurseForge URL to pin."""
+
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     cf_excluded: list[Path] = []
+    stash_only: list[Path] = []   # removed for the export, restored afterwards
     swaps: dict[Path, Path] = {}  # canonical-path-in-pack -> source-file-to-copy-in
     excluded_set: set[Path] = set()
 
@@ -365,8 +373,27 @@ def packwiz_export(pack_dir: Path, packwiz_exe: Path, platform: str, out_path: P
                 # per-OS StreamCraft jar wins over the Windows CF reference.
                 swaps[canon] = plat_src
 
+    if bundle_sc_dir is not None:
+        # Ship the jar itself rather than a pin. Must run AFTER the CF swap and
+        # the platform overlay so it can drop whichever streamcraft pin they
+        # selected — all three target the same path.
+        mc_ver = read_pack_field(pack_dir / "pack.toml", "minecraft", section="versions")
+        jar_name = (f"streamcraft-{bundle_sc_version}+mc{mc_ver}"
+                    f"{variant_suffix(variant)}.jar")
+        src_jar = Path(bundle_sc_dir) / jar_name
+        if not src_jar.is_file():
+            raise SystemExit(
+                f"ERR: --bundle-streamcraft is set but {src_jar} does not exist.\n"
+                f"  Build it first: cd StreamCraft/versions/26.1 && ./gradlew :band:build")
+        sc_pin = pack_dir / "mods" / "streamcraft-live.pw.toml"
+        swaps.pop(sc_pin, None)          # discard any CF / per-OS pin swap
+        if sc_pin.exists():
+            stash_only.append(sc_pin)    # stashed now, restored in the finally
+        swaps[pack_dir / "mods" / jar_name] = src_jar
+        print(f"  StreamCraft bundled as override: {jar_name}")
+
     # Files we'll move/replace and must restore afterward.
-    affected = list(cf_excluded) + list(swaps.keys())
+    affected = list(cf_excluded) + stash_only + list(swaps.keys())
 
     stash_dir: Path | None = None
     try:
@@ -810,6 +837,14 @@ def main() -> int:
                    help="CurseForge changelogType (default: html, converted client-side)")
     p.add_argument("--no-export", action="store_true",
                    help="Skip packwiz export; use the artifact already in dist/")
+    p.add_argument("--bundle-streamcraft", metavar="DIR",
+                   help="Ship StreamCraft as a bundled override from DIR instead of "
+                        "pinning it, picking the per-OS jar matching each variant. For "
+                        "prereleases of an unreleased build that has no public URL yet. "
+                        "Requires --streamcraft-version.")
+    p.add_argument("--streamcraft-version", metavar="VER",
+                   help="StreamCraft version to bundle (e.g. 0.19.0). Used with "
+                        "--bundle-streamcraft to resolve each variant's jar filename.")
     p.add_argument("--no-cf-verify", action="store_true",
                    help="Skip the post-publish readback that confirms the per-OS "
                         "companion files actually attached to the primary")
@@ -879,6 +914,17 @@ def main() -> int:
         print(f"\nDone — {0 if ok else 1} failure(s)")
         return 0 if ok else 1
 
+    bundle_sc_dir: Path | None = None
+    if args.bundle_streamcraft:
+        if not args.streamcraft_version:
+            print("ERR: --bundle-streamcraft requires --streamcraft-version")
+            return 1
+        bundle_sc_dir = Path(args.bundle_streamcraft).expanduser().resolve()
+        if not bundle_sc_dir.is_dir():
+            print(f"ERR: --bundle-streamcraft directory not found: {bundle_sc_dir}")
+            return 1
+        print(f"Bundling StreamCraft {args.streamcraft_version} from {bundle_sc_dir}")
+
     dist = pack_dir / "dist"
     mrpacks: list[Path] = []
     cf_zips: list[Path] = []
@@ -894,10 +940,14 @@ def main() -> int:
         for idx, v in enumerate(variants):
             if do_modrinth:
                 print(f"\n--- exporting .mrpack ({v}) ---")
-                packwiz_export(pack_dir, packwiz_exe, "modrinth", mrpacks[idx], variant=v)
+                packwiz_export(pack_dir, packwiz_exe, "modrinth", mrpacks[idx], variant=v,
+                               bundle_sc_dir=bundle_sc_dir,
+                               bundle_sc_version=args.streamcraft_version)
             if do_curseforge:
                 print(f"\n--- exporting CurseForge .zip ({v}) ---")
-                packwiz_export(pack_dir, packwiz_exe, "curseforge", cf_zips[idx], variant=v)
+                packwiz_export(pack_dir, packwiz_exe, "curseforge", cf_zips[idx], variant=v,
+                               bundle_sc_dir=bundle_sc_dir,
+                               bundle_sc_version=args.streamcraft_version)
 
     failures = 0
 
