@@ -25,6 +25,11 @@ Usage:
     # Re-use an artifact already in dist/ instead of re-exporting
     python scripts/publish.py --platform modrinth --no-export
 
+    # Check an already-published CurseForge release still has its per-OS
+    # companions attached (uploads nothing)
+    python scripts/publish.py --platform curseforge --cf-verify-only \
+        --cf-parent-file-id <primary file id> --variant all
+
 The version is read from pack.toml; the changelog is the matching `## [X.Y.Z]`
 section of CHANGELOG.md. Auth comes from a gitignored `.env` in the pack root
 (TBS-client/.env) — see .env.example:
@@ -70,7 +75,20 @@ except ImportError:
 
 MODRINTH_API = "https://api.modrinth.com/v2"
 CURSEFORGE_API = "https://minecraft.curseforge.com/api"
+# The upload API has no list/read endpoint, so post-publish verification reads
+# back through the public website API instead (unauthenticated, no key needed).
+CURSEFORGE_WEB_API = "https://www.curseforge.com/api/v1"
 USER_AGENT = "slashdaemon/TheBlockSurvival publish.py (jon@papp.as)"
+
+# CurseForge FileStatus enum. Only 4 is confirmed-live by observation; the rest
+# are best-effort labels so the readback prints something meaningful, and any
+# unknown code falls through to its raw number.
+CF_FILE_STATUS = {
+    1: "processing", 2: "changes-required", 3: "under-review", 4: "approved",
+    5: "rejected", 6: "malware-detected", 7: "deleted", 8: "archived",
+    9: "testing", 10: "released", 11: "ready-for-review", 12: "deprecated",
+    13: "baking", 14: "awaiting-publishing", 15: "failed-publishing",
+}
 
 DEFAULT_MODRINTH_PROJECT = "theblocksurvival"
 # Loader the .mrpack manifest declares. TheBlockSurvival is a Fabric pack.
@@ -518,6 +536,73 @@ def cf_resolve_game_versions(
     return ids
 
 
+def cf_read_file(project_id: int, file_id: int) -> dict | None:
+    """Read one file's public metadata (fileName, status, additionalFilesCount).
+    Returns None if CurseForge hasn't published it yet or the read fails —
+    callers treat that as "not visible", never as success."""
+    url = f"{CURSEFORGE_WEB_API}/mods/{project_id}/files/{file_id}"
+    try:
+        r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+        if r.status_code >= 400:
+            return None
+        return r.json().get("data") or None
+    except Exception:
+        return None
+
+
+def cf_status_label(status) -> str:
+    return CF_FILE_STATUS.get(status, f"status-{status}")
+
+
+def cf_verify_release(
+    project_id: int,
+    primary_file_id: int,
+    expected_additional: int,
+    attempts: int = 6,
+    delay: int = 15,
+) -> bool:
+    """Read the release back from CurseForge and confirm the primary carries
+    `expected_additional` companion files.
+
+    Why this exists: the upload API happily returns a fileID for an additional
+    file and can STILL leave the release Windows-only — CurseForge locks the
+    parent a few seconds after ingest, so a mid-run 500/1012 silently drops the
+    companions. v1.4.0 shipped that way (primary only) and nothing in the
+    pipeline noticed for weeks; Mac and Linux users got the Windows pack, which
+    pins the Windows StreamCraft jar and breaks capture and voice on their OS.
+
+    Ingest is asynchronous, so poll rather than checking once. A short count is
+    a hard failure. Files still awaiting moderation are NOT a failure — they are
+    attached and will go live on approval — but they are reported explicitly.
+    """
+    print(f"\n  --- verifying CurseForge release (project {project_id}, "
+          f"primary {primary_file_id}) ---")
+    for attempt in range(1, attempts + 1):
+        data = cf_read_file(project_id, primary_file_id)
+        if data is None:
+            print(f"    primary not readable yet (attempt {attempt}/{attempts})")
+        else:
+            found = data.get("additionalFilesCount", 0) or 0
+            label = cf_status_label(data.get("status"))
+            print(f"    primary {data.get('fileName')} [{label}] — "
+                  f"additional files: {found}/{expected_additional}")
+            if found >= expected_additional:
+                if data.get("status") != 4:
+                    print(f"    NOTE primary is '{label}', not yet approved — "
+                          f"files go live once CurseForge moderation clears them.")
+                print("    VERIFIED — every expected companion is attached.")
+                return True
+        if attempt < attempts:
+            time.sleep(delay)
+
+    print(f"    FAILED — expected {expected_additional} additional file(s) on "
+          f"primary {primary_file_id}; CurseForge does not report them.")
+    print(f"    Mac/Linux players would receive the Windows pack. Re-run:")
+    print(f"      python scripts/publish.py --platform curseforge --no-export \\")
+    print(f"          --cf-parent-file-id {primary_file_id} --variant <the missing ones>")
+    return False
+
+
 def publish_curseforge(
     zips: list[Path],
     project_id: int,
@@ -529,6 +614,7 @@ def publish_curseforge(
     token: str,
     dry_run: bool,
     parent_file_id: int | None = None,
+    verify: bool = True,
 ) -> bool:
     """Upload `zips[0]` as the primary CurseForge file; upload each subsequent
     entry as an additional file with `parentFileID` set to the primary's file
@@ -618,10 +704,18 @@ def publish_curseforge(
     if recovery:
         primary_id = parent_file_id
         pending = list(zips)
+        # A recovery run tops up a primary that may already carry companions
+        # from the original publish, so the expected total is what is already
+        # attached plus what we are about to add.
+        existing = cf_read_file(project_id, primary_id) or {}
+        baseline = existing.get("additionalFilesCount", 0) or 0
+        if baseline:
+            print(f"  primary already carries {baseline} additional file(s)")
     else:
         primary_id = _upload(primary, primary_meta)
         print(f"    OK primary fileID={primary_id}")
         pending = zips[1:]
+        baseline = 0
     for p in pending:
         extra_meta = {
             "changelog": changelog,
@@ -644,6 +738,14 @@ def publish_curseforge(
                 print(f"    retry {attempt}/2 in {wait}s after: {e}")
                 time.sleep(wait)
         print(f"    OK additional fileID={extra_id}")
+
+    # An upload that returned a fileID is not proof the release is complete —
+    # read it back before calling this a success.
+    if verify and pending:
+        if not cf_verify_release(project_id, primary_id, baseline + len(pending)):
+            raise RuntimeError(
+                f"CurseForge release verification failed for project {project_id} "
+                f"(primary {primary_id})")
     return True
 
 
@@ -678,6 +780,13 @@ def main() -> int:
                    help="CurseForge changelogType (default: html, converted client-side)")
     p.add_argument("--no-export", action="store_true",
                    help="Skip packwiz export; use the artifact already in dist/")
+    p.add_argument("--no-cf-verify", action="store_true",
+                   help="Skip the post-publish readback that confirms the per-OS "
+                        "companion files actually attached to the primary")
+    p.add_argument("--cf-verify-only", action="store_true",
+                   help="Upload nothing; just read the CurseForge release back and "
+                        "report whether the expected companions are attached. "
+                        "Requires --cf-parent-file-id.")
     p.add_argument("--dry-run", action="store_true",
                    help="Export and print upload metadata, but upload nothing")
     args = p.parse_args()
@@ -723,6 +832,22 @@ def main() -> int:
         print(f"ERR: unknown --variant {args.variant!r}; valid: {PLATFORM_VARIANTS} or 'all'")
         return 1
     print(f"Variants: {', '.join(variants)}")
+
+    # ---- verify-only: read an existing release back, upload nothing --------
+    if args.cf_verify_only:
+        if not args.cf_parent_file_id:
+            print("ERR: --cf-verify-only requires --cf-parent-file-id "
+                  "(the primary file id to inspect)")
+            return 1
+        cf_pid = args.cf_project_id or int(
+            os.environ.get("CURSEFORGE_PROJECT_ID", "0").strip() or 0)
+        if not cf_pid:
+            print("ERR: --cf-project-id not given and CURSEFORGE_PROJECT_ID not set")
+            return 1
+        expected = len([v for v in variants if v != DEFAULT_VARIANT])
+        ok = cf_verify_release(cf_pid, args.cf_parent_file_id, expected)
+        print(f"\nDone — {0 if ok else 1} failure(s)")
+        return 0 if ok else 1
 
     dist = pack_dir / "dist"
     mrpacks: list[Path] = []
@@ -795,7 +920,8 @@ def main() -> int:
         try:
             publish_curseforge(cf_zips, cf_pid, version, [*game_versions, "Fabric"],
                                args.type, changelog_cf, changelog_type, token, args.dry_run,
-                               parent_file_id=args.cf_parent_file_id)
+                               parent_file_id=args.cf_parent_file_id,
+                               verify=not args.no_cf_verify)
         except Exception as e:
             print(f"  FAILED: {e}")
             failures += 1

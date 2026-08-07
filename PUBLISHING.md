@@ -44,6 +44,31 @@ section of `CHANGELOG.md`. Modrinth uploads are idempotent.
   linked via `parentFileID`, matching the StreamCraft convention (additional
   files are supported on CurseForge).
 
+### Post-publish verification (do not skip this)
+
+A CurseForge upload that returns a fileID is **not** proof the release is
+complete. CurseForge locks the primary a few seconds after it finishes ingest,
+so a mid-run 500 / 1012 silently drops the remaining companions and leaves the
+project Windows-only. That is exactly how **v1.4.0 shipped** — primary only, for
+weeks — which meant every Mac and Linux player installing from the CurseForge
+app got the Windows pack. That pack pins the Windows StreamCraft jar, whose
+platform marker is `windows-x86_64`, so on macOS the native bundle never
+extracts, capture is disabled, and the voice mic list collapses to just
+"Default" with no warning.
+
+`publish.py` now reads the release back after every CurseForge upload and fails
+loudly when the expected companions are not attached. To check an existing
+release at any time (uploads nothing):
+
+```bash
+python scripts/publish.py --platform curseforge --cf-verify-only \
+    --cf-parent-file-id <primary file id> --variant all
+```
+
+Files still awaiting CurseForge moderation are reported but are not treated as a
+failure — they are attached and go live on approval. A short **count** is a hard
+failure. `--no-cf-verify` skips the check.
+
 ### Per-platform StreamCraft overlay
 
 The canonical pack references the Windows StreamCraft jar. For non-Windows
