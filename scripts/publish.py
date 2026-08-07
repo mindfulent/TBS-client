@@ -145,6 +145,21 @@ CURSEFORGE_EXCLUDED = [
 # scripts/cf-sources/<same-relative-path>, then restore the snapshot.
 CF_SOURCES_DIR = "scripts/cf-sources"
 
+# 3. EXTRA: files that ship ONLY in the CurseForge build. Any file under this
+#    directory is copied to the matching path in the pack for a CurseForge
+#    export, then removed again — the mirror image of CF_SOURCES_DIR, but for
+#    plain files rather than .pw.toml metafiles.
+#
+#    Why it exists: the CurseForge build drops Default Options (ARR — the
+#    author blocks modpack redistribution), and with it
+#    config/defaultoptions/keybindings.txt, which is what moves Open Parties
+#    and Claims off the apostrophe. OPAC hardcodes GLFW key 39 (') and so does
+#    StreamCraft's menu key, so without this every CurseForge player gets a
+#    hard keybind conflict while Modrinth players never see one. Vanilla reads
+#    options.txt itself, so shipping it as an override applies the rebind with
+#    no extra mod involved.
+CF_EXTRA_DIR = "scripts/cf-extra"
+
 # Appended to the CurseForge release changelog so the CF page always tells
 # players what's missing relative to the Modrinth build, and why.
 CURSEFORGE_EXCLUSION_NOTE = (
@@ -263,6 +278,8 @@ def packwiz_export(pack_dir: Path, packwiz_exe: Path, platform: str, out_path: P
     - **CurseForge swap** (only when platform=="curseforge"): excludes
       CURSEFORGE_EXCLUDED entries and overlays the files in CF_SOURCES_DIR so
       the .zip carries proper CurseForge manifest references.
+    - **CurseForge extras** (only when platform=="curseforge"): copies in the
+      files under CF_EXTRA_DIR, which exist only in the CurseForge build.
     - **Platform overlay** (when variant != DEFAULT_VARIANT): overlays the
       files in PLATFORM_SOURCES_DIR/<variant>/ — currently a per-OS
       StreamCraft Live .pw.toml so each platform's .mrpack / .zip points at
@@ -289,6 +306,19 @@ def packwiz_export(pack_dir: Path, packwiz_exe: Path, platform: str, out_path: P
                 if canon in excluded_set:
                     continue
                 swaps[canon] = cf_src
+
+        # CF-only extra files (see CF_EXTRA_DIR). These have no canonical
+        # counterpart in the pack, so the stash/restore below simply deletes
+        # them again after the export — nothing to restore.
+        cf_extra_root = pack_dir / CF_EXTRA_DIR
+        if cf_extra_root.is_dir():
+            for extra in sorted(cf_extra_root.rglob("*")):
+                if not extra.is_file():
+                    continue
+                canon = pack_dir / extra.relative_to(cf_extra_root)
+                if canon in excluded_set:
+                    continue
+                swaps[canon] = extra
 
         # Stale-swap guard. A CurseForge swap can silently rot: CurseForge may
         # still host only an older Minecraft build of a mod while the canonical
