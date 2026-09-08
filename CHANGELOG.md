@@ -2,6 +2,46 @@
 
 All notable changes to the TheBlockSurvival client modpack (formerly TBS-Client).
 
+## [1.5.0] — 2026-09-07
+
+**StreamCraft Live 0.17.4 → 0.19.22.** Lockstep release with TBS-Server 1.5.0 — run the
+same StreamCraft version on client and server. No mod added or removed; every other mod
+stays at the exact same version.
+
+- Repinned **StreamCraft Live → 0.19.22+mc26.1.2** (Modrinth `1G3JRcHw`), rolling up the
+  0.18–0.19 line published 2026-07-31 → 2026-09-07. Highlights for players:
+  - **Gesture Detection (beta)** — your webcam poses your character's arms for nearby
+    players (wave, point, hold something up). Runs locally, works with the camera off,
+    free in every tier. Toggle it under Camera in the StreamCraft menu; it starts off on
+    every world join.
+  - **Your voice is on the stream** — YouTube restreams and web viewers now hear your mic
+    alongside game audio. **Mic on stream is on by default**; turn it off in Voice Chat
+    settings if your voice should stay in-game only.
+  - **Display Block audio** — every Display Block has its own Volume and Range (Muted →
+    Auto → 4…80 blocks → Global) in its config screen, synced to everyone. A new
+    **Stream Volume** (0–200%) in General Settings is your personal listening level.
+  - **Voice chat** — works when hosting with Open to LAN, shows a live status line in
+    Voice Chat Settings, and "Open Mic" is now "Always On". Mac 44.1 kHz mics no longer
+    sound pitched up.
+  - **macOS screen sharing rebuilt** — camera + screen share no longer freezes, a Menu
+    Bar toggle (on by default) gives a clean 1920×1080 share, captures up to 1440p, and
+    fullscreen apps lose the black notch strip automatically. Camera permission is now
+    requested properly. Windows and Linux capture unchanged.
+  - **Block Glow** blends out softly, sits closer to the panel, and no longer cuts holes
+    in clouds. On 26.1.2 the glow can still hide water behind it (fix pending upstream).
+  - **Share to web** works when alone on the server; webcam-only web shares reach the page.
+  - **Settings** — General Settings is a compact two-column form with tooltips on every
+    control. **Auto-crop is off by default** on newly placed Display Blocks; existing
+    blocks keep their setting.
+- All five per-OS pins updated in sync (Windows primary, Linux, Linux ARM64, macOS
+  arm64/x86_64) plus the CurseForge swap (CF file `8834171`, project `1451729`).
+- **No wire-protocol change** since 0.17.4 (still `7`), so a client on the older build
+  still connects — but Display Block audio, the glow fixes, gestures and the share-to-web
+  fix all need both sides on this build, and mixed 0.17.4/0.19.22 voice can double up.
+  Update to match the server.
+- **macOS players: reimport the pack rather than swapping only the jar** — several fixes
+  ship in the native Mac component inside it.
+
 ## [1.4.1] — 2026-08-06
 
 **Fixes a keybind clash that made the StreamCraft menu unreachable on CurseForge
